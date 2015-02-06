@@ -10,13 +10,14 @@
 \usepackage{proof} % M. P. и его друзья
 \usepackage[pdftitle={Курс матлогики по Штукенбергу Д. Г.}]{hyperref}
 \usepackage{amsthm}
+\usepackage{comment}
 \usepackage{stmaryrd} % ⟦⟧
 \usepackage{enumitem} % всякие модные enumerate-ы (latin letters, roman numbers etc)
 \usepackage{xcolor} % red color for worries
 \usepackage{pict2e} % templates
 %\usepackage{enumerate}
 %\usepackage{changepage}
-\usepackage[left=2cm,right=1.6cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}	
+\usepackage[left=2cm,right=1.6cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
 \usepackage{fontspec}
 \setmainfont[Ligatures=TeX]{Palatino Linotype}
 \setmonofont{DejaVu Sans Mono}
@@ -114,8 +115,11 @@
 Mykhail Volkhov, 2538, 2014Sep-2015Jan\\
 Я не отвечаю за верность написанного - много информации
 я придумал сам, много достал из недостоверных источников.
+\renewcommand{\thesection}{\Roman{section}}
 \include{base}
 \include{defenitions}
+\setcounter{section}{0}
+\renewcommand{\thesection}{\arabic{section}}
 \include{ticket1}
 \include{ticket2}
 \include{ticket3}
@@ -124,245 +128,8 @@ Mykhail Volkhov, 2538, 2014Sep-2015Jan\\
 \include{ticket6}
 \include{ticket7}
 \include{ticket8}
+\include{ticket9}
 \end{document}
-\section{Ticket 9: представимость}
-\label{sec-11}
-\subsection{Функции, их представимость}
-\label{sec-11-1}
-Арифметическая функция - это отображение $f: N_0^n \to N_0$
-Арифметическое отношение - это $P \in N_0^n$
-Если $k \in N_0$, то $k\textasciitilde{} = 0'''''\ldots${}, где количество штрихов
-есть $k$.
-\begin{itemize}
-\item Арифметическое отношение R \in N₀ⁿ выразимо в ФА, если
-\exists a с n свободными переменными:
-a(x_1\ldots{}xₙ), такая что
-\begin{enumerate}
-\item $Eсли R(k_1\ldots{}kₙ), то \vdash a(k_1\textasciitilde{}\ldots{}kₙ\textasciitilde{})$
-\item $Eсли \lnot R(k_1..kₙ), то \vdash \lnot a(k_1\textasciitilde{}\ldots{}kₙ\textasciitilde{})$
-\end{enumerate}
-\item C$_{\text{R}}$ - функция, равная 1, если R, и равная 0, если \lnot R
-\item \exists !y.\phi(y) = \exists y.\phi(y) \& ∀a∀b(\phi(a) \& \phi(b) \to a = b)
-\item f: N₀ⁿ \to N₀ представима в ФА, если \exists a(x_1\ldots{}xₙ₊_1), что
-∀x_1\ldots{}xₙ+_1:
-\begin{enumerate}
-\item $f(x_1\ldots{}xₙ) = xₙ₊_1 <=> \vdash a(x_1\textasciitilde{},\ldots{}xₙ₊_1\textasciitilde{})$
-\item \exists !b(a(x_1\textasciitilde{}\ldots{}xₙ\textasciitilde{}, b))
-\end{enumerate}
-\end{itemize}
-\subsection{Теорема о связи представимости и выразимости}
-\label{sec-11-2}
-R выразимо <=> Cᵣ представимо
-\to a выражает R
-(a \to (xₙ₊_1=0')) \& (\lnot a \to (xₙ₊_1=0))
-представляет Cᵣ
-По выразимости $R \vdash a$; тогда ⊤\to a\to ⊤ => a\to ⊤
-По 10i, перенесенной к нам a \to (\lnot a \to ⊥)
-правило с единственностью вроде понятно (хотя руками помахал, да)
-← Cᵣ представимо \to R выразимо
-Пусть представлять Cᵣ будет
-a(x_1\ldots{}.xₙ,xₙ₊_1)
-Тогда определим, какая формула выражает R:
-a(\ldots{}., 1)
-Из представимости:
-\begin{itemize}
-\item \exists b.a(x_1\ldots{}xₙ₊_1)
-\item ∀x∀y(a(\ldots{}x) \& a(\ldots{} y) \to x = y)
-\item если Cᵣ(x_1\ldots{}xₙ) = 1, то $\vdash a(x_1\ldots{}xₙ,1)$
-\item если Cᵣ(\ldots{}) = 0, то $\vdash a(..,0)$
-\end{itemize}
-
-Докажем выводимость
-\begin{enumerate}
-\item Покажем, что если $R(x_1\ldots{}xₙ)$, то $\vdash a(x_1\ldots{}xₙ, 1)$
-Из представимости прямо ровно.
-\item Покажем, что если $\lnot R(x_1\ldots{}.xₙ), то \vdash \lnot a(x_1\ldots{}xₙ, 1)$
-по единственности
-
-∀x∀y(a(x_1\ldots{}xₙ, x) \& a(x_1\ldots{}xₙ, y) \to x = y)
-a(x_1\ldots{}xₙ, 0) \& a(x_1\ldots{}xₙ, 1) \to (0 = 1) (спустя две акс. и 2 MP)
-дедукцию
-$a(x_1\ldots{}xₙ, 0) \& a(x_1\ldots{}xₙ, 1) \vdash ⊥$
-$a(x_1\ldots{}xₙ, 0) \& a(x_1\ldots{}xₙ, 1) \to a(x_1\ldots{}xₙ, 0)$
-$a(x_1\ldots{}xₙ, 0)$
-\lnot a(x_1\ldots{}xₙ, 0)                          по представимости
-a(x_1\ldots{}xₙ, 0) \to (\lnot a(x_1\ldots{}xₙ, 0) \to \lnot a(x_1\ldots{}xₙ, 1)) (10i в ИИВ, доказуема в предикатах)
-\lnot a(x_1\ldots{}xₙ, 1)
-хотим \lnot a(x_1\ldots{}xₙ, 1)
-\end{enumerate}
-\subsection{beta-функция Гёделя, китайская теорема об остатках}
-\label{sec-11-3}
-β(b,c,i) = b \% (1 + c(1 + i)),
-где \%(a, b) = d, ∀m.(d + m * b = a), m≥0, 0≤d≤b
-\subsubsection{Китайская теорема об остатках}
-\label{sec-11-3-1}
-n_1\ldots{}nₖ - попарно взаимно простые инты
-r_1\ldots{}rₖ - любые целые, что 0 ≤ rᵢ < nᵢ
-∀i\exists b  rᵢ = b \% nₖ
-\subsubsection{Гёделева Г-последовательность}
-\label{sec-11-3-2}
-Гᵢ = (i + 1) * c + 1
-Γ(c) = 1*c + 1, 2*c + 1, 3*c + 1,\ldots{}(n+1)*c + 1
-
-Докажем, что Г(c) подходит на роль n_1\ldots{}nₖ в китайской
-теореме об остатках. Выделим последовательность размера
-n: k_1\ldots{}kₙ.
-Чтобы это выполнялось возьмем c = (max(k_1\ldots{}kₙ))!
-\begin{enumerate}
-\item В Г любые два элемента попарно взаимно простые
-\label{sec-11-3-2-1}
-Пусть Γᵢ ⋮ Γⱼ имеют общий делитель p > 1. Мы можем его разложить
-на простые множители и взять какой-нибудь простой (любое число
-раскладывается на простые множители).
-Тогда (Γᵢ - Γⱼ) ⋮ p, (c * (i - j)) ⋮ p. Заметим, что \lnot (c ⋮ p),
-потому что иначе Γᵢ = 1 + c * (i + 1) ⋮ p и c * (i + 1) ⋮ p,
-а они отличаются на единицу. Тогда (i - j) ⋮ p, но c = m! m > n,
-а i - j < n, значит c ⋮ p. \to ←
-\item Каждое kᵢ < Гᵢ
-\label{sec-11-3-2-2}
-kᵢ ≤ c < 1 + c * (i + 1) = Γᵢ
-\end{enumerate}
-\subsubsection{Лемма о β-функции}
-\label{sec-11-3-3}
-Увидим, что β(b,c,i) считает остаток от деления b на
-(i + 1) * c + 1 - элемент Геделевой последовательности.
-\begin{itemize}
-\item <a₀\ldots{}aₙ>\in N \to \exists b\exists c(aₖ=β(b,i,c)) - β-функция кодирует
-последовательность натуральных чисел и может
-доставать по индексу i
-
-a₀\ldots{}aₙ  - последовательность натуральных чисел
-тогда существует такое c, что Г = 1*c+1, 2*c+1,\ldots{}
-если c ≥ max(a₀\ldots{}aₙ), то aₖ < (i+1)*c+1
-Но по свойству Г элементы попарно взаимно просты
-тогда сравнения
-a₀ \% (0+1)*c+1
-a_1 \% (1+1)*c+1
-\ldots{}\ldots{}\ldots{}\ldots{}.
-aₙ \% (n+1)*c+1
-имеют общее решение b по китайской теореме об остатках
-тогда aᵢ = b \% (i+1)*c + 1
-но это и есть β-функция
-aᵢ = β(b,c,i)
-\end{itemize}
-\subsubsection{Представимость β-функции Гёделя в ФА}
-\label{sec-11-3-4}
-β-функция представима в ФА отношением
-B(b,c,i,d) = \exists q((b = q * (1 + c * (i + 1)) + d) \& (d < 1 + c * (i + 1)))
-Пусть 1 + c * (i + 1) = z
-Докажем условия представимости:
-\begin{enumerate}
-\item Эквивалентность
-\begin{enumerate}
-\item β(b,c,i) = d, тогда $\vdash B(b,c,i,d)$
-b = z * (1 + c * (i + 1))    (это и следующее - из леммы о β) P
-d < 1 + c * (i + 1)                                           Q
-P \to Q \to P \& Q
-P \& Q
-P \& Q \to \exists q.(P \& Q) [z:= q]
-\exists q.(P \& Q)
-\item Пусть $\vdash B(b,c,i,d)$, тогда
-\exists q.(P \& Q)
-подберем такое q (по лемме)
-P \& Q \to P
-P \& Q \to Q
-P
-Q
-значит β(b,c,i) = d
-\end{enumerate}
-\item Единственность
-Следует из леммы.
-\end{enumerate}
-\subsection{Теорема о представимости рекурсивных функций Z, N, U}
-\label{sec-11-4}
-\begin{enumerate}
-\item Z
-Z(a, b) = (b = 0)
-\begin{itemize}
-\item Z(a) = b верно, тогда b = 0
-b = 0
-\item (b = 0)
-b = 0
-тогда Z(0) = 0, все ок
-\item \exists y.\phi(y) \& ∀a∀b(\phi(a) \& \phi(b) \to a = b)
-Тоже как-то несложно
-\end{itemize}
-\item N
-N(a, b) = (a = b')
-\begin{itemize}
-\item N(a) = b, тогда a = b'
-a = b'
-\item a = b', тогда
-N(a) = b
-\item Третье не хочу
-\end{itemize}
-\item Uₙᵢ
-Uₙᵢ(x_1\ldots{}xₙ) = (x_1 = x_1) \& (x₂ = x₂) \& \ldots{} \& (xₙ₊_1 = xᵢ)
-\begin{itemize}
-\item U(..) = xᵢ, тогда xₙ₊_1 = x_1
-x_1 = x_1 доказывается
-\ldots{}
-xₙ = xₙ доказывается
-xₙ₊_1 = x_1 по условию
-объединяем все \&
-\item (x_1 = x_1) \& \ldots{}.
-вытаскиваем каждый элемент и тогда видим, что
-проекция делает ровно то, что должна.
-\item \exists q.(xₙ₊_1 = q)
-ХЗ
-\item ∀a∀b(x(\ldots{}a)\&x(\ldots{}.b) \to a = b)
-Для конкретных a, b обявляем a = b - ⊤, тогда выводим
-из него конъюнкцию и навешиваем два квантора
-\end{itemize}
-\end{enumerate}
-\subsection{Теорема о представимости S}
-\label{sec-11-5}
-Eсли f и g_1\ldots{}gₙ представимы, то S<f, g_1\ldots{}gₙ> представима
-Пусть F, G_1\ldots{}Gₙ представляют их.
-S(a_1\ldots{}aₘ, b) = \exists b_1\ldots{}\exists bₙ(G_1(a_1\ldots{}aₙ, b_1) \& \ldots{} \& Gn(a_1\ldots{}aₘ, bₙ)
-\& F(b_1\ldots{}bₙ, b))
-\begin{itemize}
-\item Пусть S(a_1\ldots{}aₙ) = b, тогда существуют такие b_1\ldots{}bₙ, что \#каждый аргумент\#
-Поскольку f,g_1\ldots{}gₙ представимы, то доказуемы по представимости
-f(b_1\ldots{}bₙ, b)
-g_1(a_1\ldots{}aₙ, b_1)
-\ldots{}
-gₙ(a_1\ldots{}aₙ, bₙ)
-g_1 \& g₂ \& \ldots{} \& gₙ \& f    объединили \&     "P"
-"P" \to \exists b_1."P[b_1:=b_1]" + MP
-\ldots{}
-Ну и навесили кванторы, да.
-\item Пусть верна формула с кванторами. Тогда она и есть уже то, что надо
-\item не могу, да и вообще нигде это свойство не доказывается
-\end{itemize}
-\subsection{Теорема о представимости R}
-\label{sec-11-6}
-Пусть f, g представимы F, G. Тогда R<f,g> представима.
-f: Nⁿ\to N, g:Nⁿ⁺²\to N
-r(x_1\ldots{}xₙ, k, a) =
-   \exists b\exists c(
-        \exists k(β(b, c, 0, k) \& \phi(x_1\ldots{}xₙ, k))
-        \& B(b, c, xₙ₊_1, a)
-        \& ∀k(k<xₙ₊_1 \to \exists d\exists e(B(b,c,k,d)\&B(b,c,k',e)\&G(x_1\ldots{}xₙ,k,d,e))))
-Единственная возможность осознать -- внимательно прочесть формулу.
-Тут β-функция используется в качестве функии отображения нашего шага
-вычисления рекурсии в результат, типа
-0 - F(\ldots{})
-1 - G(\ldots{})
-\ldots{}
-n - G(\ldots{})
-\subsection{Теорема о представимости μ}
-\label{sec-11-7}
-f: Nⁿ⁺¹\to N представима F, тогда μ<f> представима M
-Μ<F>(x_1\ldots{}xₙ₊_1) = F(x_1\ldots{}xₙ, xₙ₊_1, 0) \& ∀y((y < xₙ₊_1) \to \lnot F(x_1\ldots{}xₙ, y, 0))
-\begin{itemize}
-\item μ<f>(x_1\ldots{}xₙ) = xₙ₊_1, тогда xₙ₊_1 - минимальное k, такое что f(x_1..xₙ,k) = 0
-то есть имеем
-F(x_1\ldots{}xₙ, xₙ₊_1, 0)
-∀x.(k < x \to \lnot F(x_1\ldots{}xₙ, k, 0))
-Просто объединим конъюнкцией
-\item обратно ей же и разъединим
-\end{itemize}
 \section{Ticket 10: Тьюринг}
 \label{sec-12}
 \subsection{Арифметические отношения, их выразимость}

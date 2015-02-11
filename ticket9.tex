@@ -24,8 +24,10 @@ $\forall x_1\dotsc x_{n+1}:$
 \end{itemize}
 \subsection{Теорема о связи представимости и выразимости}
 \label{sec-11-2}
-$R$ выразимо <=> $C_r$ представимо
-
+\begin{theorem}
+$R$ выразимо $\Leftrightarrow$ $C_r$ представимо
+\end{theorem}
+\begin{proof}
 $\Rightarrow$ $a$ выражает $R$\\
 $(a \to (x_n₊_1=0')) \& (\lnot a \to (x_n₊_1=0))$
 представляет $C_r$\\
@@ -45,59 +47,63 @@ $a(\dotsc, 1)$
 \item если $C_r(x_1\ldots{}x_n) = 1$, то $\vdash a(x_1\ldots{}x_n,1)$
 \item если $C_r(\dots) = 0$, то $\vdash a(\dotsc, 0)$
 \end{itemize}
-\begin{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 Докажем выводимость
 \begin{enumerate}
 \item Покажем, что если $R(x_1\ldots{}x_n)$, то $\vdash a(x_1\ldots{}x_n, 1)$
 Из представимости прямо ровно.
-\item Покажем, что если $\lnot R(x_1\ldots{}.x_n), то \vdash \lnot a(x_1\ldots{}x_n, 1)$
-по единственности
+\item Покажем, что если $\lnot R(x_1\ldots{}.x_n), то \vdash \lnot a(x_1\ldots{}x_n, 1)$\\
+По единственности
 
-\forall x\forall y(a(x_1\ldots{}x_n, x) \& a(x_1\ldots{}x_n, y) \to x = y)
-a(x_1\ldots{}x_n, 0) \& a(x_1\ldots{}x_n, 1) \to (0 = 1) (спустя две акс. и 2 MP)
-дедукцию
-$a(x_1\ldots{}x_n, 0) \& a(x_1\ldots{}x_n, 1) \vdash ⊥$
-$a(x_1\ldots{}x_n, 0) \& a(x_1\ldots{}x_n, 1) \to a(x_1\ldots{}x_n, 0)$
-$a(x_1\ldots{}x_n, 0)$
-\lnot a(x_1\ldots{}x_n, 0)                          по представимости
-a(x_1\ldots{}x_n, 0) \to (\lnot a(x_1\ldots{}x_n, 0) \to \lnot a(x_1\ldots{}x_n, 1)) (10i в ИИВ, доказуема в предикатах)
-\lnot a(x_1\ldots{}x_n, 1)
-хотим \lnot a(x_1\ldots{}x_n, 1)
+$\forall x\forall y(a(x_1\ldots{}x_n, x) \& a(x_1\ldots{}x_n, y) \to x = y)$\\
+$a(x_1\ldots{}x_n, 0) \& a(x_1\ldots{}x_n, 1) \to (0 = 1)$ (спустя две акс. и 2 MP)\\
+Делаем дедукцию\\
+$a(x_1\ldots{}x_n, 0) \& a(x_1\ldots{}x_n, 1) \vdash ⊥$\\
+$a(x_1\ldots{}x_n, 0) \& a(x_1\ldots{}x_n, 1) \to a(x_1\ldots{}x_n, 0)$\\
+$a(x_1\ldots{}x_n, 0)$\\
+$\lnot a(x_1\ldots{}x_n, 0)$ по представимости
+$a(x_1\ldots{}x_n, 0) \to (\lnot a(x_1\ldots{}x_n, 0) \to \lnot a(x_1\ldots{}x_n, 1))$ (10i в ИИВ, доказуема в предикатах)\\
+$\lnot a(x_1\ldots{}x_n, 1)$\\
+Хотим $\lnot a(x_1\ldots{}x_n, 1)$
 \end{enumerate}
+\end{proof}
 \subsection{beta-функция Гёделя, китайская теорема об остатках}
 \label{sec-11-3}
-β(b,c,i) = b \% (1 + c(1 + i)),
-где \%(a, b) = d, \forall m.(d + m * b = a), m≥0, 0≤d≤b
+$\beta(b, c, i) = b \% (1 + c * (1 + i))$\\
+Где $\%(a, b) = d$, что $\forall m . (d + m * b = a), m \geq 0, 0 \leq d \leq b$
+
 \subsubsection{Китайская теорема об остатках}
 \label{sec-11-3-1}
-n_1\ldots{}nₖ - попарно взаимно простые инты
-r_1\ldots{}rₖ - любые целые, что 0 ≤ rᵢ < nᵢ
-\forall i\exists b  rᵢ = b \% nₖ
+\begin{theorem}
+$n_1\ldots{}n_k$ - попарно взаимно простые целый числа\\
+$r_1\ldots{}r_k$ - любые целые числа, что $0 \leq r_1 < n_1$\\
+Тогда: $\exists b \forall i  r_1 = b \% n_k$
+\end{theorem}
+\begin{proof}
+Без доказательства
+\end{proof}
+
 \subsubsection{Гёделева Г-последовательность}
 \label{sec-11-3-2}
-Гᵢ = (i + 1) * c + 1
-Γ(c) = 1*c + 1, 2*c + 1, 3*c + 1,\ldots{}(n+1)*c + 1
-
-Докажем, что Г(c) подходит на роль n_1\ldots{}nₖ в китайской
-теореме об остатках. Выделим последовательность размера
-n: k_1\ldots{}k_n.
-Чтобы это выполнялось возьмем c = (max(k_1\ldots{}k_n))!
+$\Gamma_1 = (i + 1) * c + 1$\\
+$\Gamma(c) = 1 * c + 1, 2 * c + 1, 3 * c + 1, \ldots (n + 1) * c + 1$
+\begin{theorem}
+$\Gamma(c)$ подходит на роль $n_1 \ldots n_k$ в китайской теореме об остатках
+\end{theorem}
+\begin{proof}
+Выделим последовательность размера $n$: $k_1 \ldots k_n$.\\
+Чтобы это выполнялось возьмем $c = (max(k_1\ldots{}k_n))!$
 \begin{enumerate}
-\item В Г любые два элемента попарно взаимно простые
+\item В $\Gamma$ любые два элемента попарно взаимно простые
 \label{sec-11-3-2-1}
-Пусть Γᵢ ⋮ Γⱼ имеют общий делитель p > 1. Мы можем его разложить
-на простые множители и взять какой-нибудь простой (любое число
-раскладывается на простые множители).
-Тогда (Γᵢ - Γⱼ) ⋮ p, (c * (i - j)) ⋮ p. Заметим, что \lnot (c ⋮ p),
-потому что иначе Γᵢ = 1 + c * (i + 1) ⋮ p и c * (i + 1) ⋮ p,
-а они отличаются на единицу. Тогда (i - j) ⋮ p, но c = m! m > n,
-а i - j < n, значит c ⋮ p. \to ←
-\item Каждое kᵢ < Гᵢ
+Пусть $\Gamma_1 \vdots \Gamma_j$ имеют общий делитель $p > 1$. Мы можем его разложить на простые множители и взять какой-нибудь простой (любое число раскладывается на простые множители).\\
+Тогда $(\Gamma_1 - \Gamma_j) \divby p, (c * (i - j)) \divby p$. Заметим, что $\lnot (c \divby p)$, потому что иначе $\Gamma_1 = 1 + c * (i + 1) \divby p$ и $c * (i + 1) \divby p$, а они отличаются на единицу. Тогда $(i - j) \divby p$, но $c = m! m > n$, а $i - j < n$, значит $c \divby p$.
+\item Каждое $k_1 < Г_1$
 \label{sec-11-3-2-2}
-kᵢ ≤ c < 1 + c * (i + 1) = Γᵢ
+$k_1 \leq c < 1 + c * (i + 1) = \Gamma_1$
 \end{enumerate}
+\end{proof}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Лемма о β-функции}
 \label{sec-11-3-3}
 Увидим, что β(b,c,i) считает остаток от деления b на

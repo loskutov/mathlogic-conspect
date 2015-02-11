@@ -126,98 +126,104 @@ $a_n \% (n + 1) * c + 1$\\
 Но это и есть $\beta$-функция:\\
 $a_i = \beta(b,c,i)$
 \end{proof}
-\begin{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Представимость β-функции Гёделя в ФА}
+\subsubsection{Представимость \texorpdfstring{$\beta$}{бета}-функции Гёделя в ФА}
 \label{sec-11-3-4}
-β-функция представима в ФА отношением
-B(b,c,i,d) = \exists q((b = q * (1 + c * (i + 1)) + d) \& (d < 1 + c * (i + 1)))
-Пусть 1 + c * (i + 1) = z
+\begin{lemma}
+$\beta$-функция представима в ФА отношением\\
+$B(b,c,i,d) = \exists q((b = q * (1 + c * (i + 1)) + d) \& (d < 1 + c * (i + 1)))$
+\end{lemma}
+\begin{proof}
+Пусть $1 + c * (i + 1) = z$\\
 Докажем условия представимости:
 \begin{enumerate}
 \item Эквивалентность
 \begin{enumerate}
-\item β(b,c,i) = d, тогда $\vdash B(b,c,i,d)$
-b = z * (1 + c * (i + 1))    (это и следующее - из леммы о β) P
-d < 1 + c * (i + 1)                                           Q
-P \to Q \to P \& Q
-P \& Q
-P \& Q \to \exists q.(P \& Q) [z:= q]
-\exists q.(P \& Q)
-\item Пусть $\vdash B(b,c,i,d)$, тогда
-\exists q.(P \& Q)
-подберем такое q (по лемме)
-P \& Q \to P
-P \& Q \to Q
-P
-Q
-значит β(b,c,i) = d
+\item $\beta(b,c,i) = d$, тогда $\vdash B(b,c,i,d)$\\
+$b = z * (1 + c * (i + 1))$ (это и следующее - из леммы о $\beta$)\\
+$d < 1 + c * (i + 1)$\\
+$P \to Q \to P \& Q$\\
+$P \& Q$\\
+$P \& Q \to \exists q.(P \& Q) [z:= q]$\\
+$\exists q.(P \& Q)$
+\item Пусть $\vdash B(b,c,i,d)$, тогда\\
+$\exists q.(P \& Q)$\\
+Подберем такое $q$ (по лемме)\\
+$P \& Q \to P$\\
+$P \& Q \to Q$\\
+$P$\\
+$Q$\\
+значит $\beta(b,c,i) = d$
 \end{enumerate}
 \item Единственность
 Следует из леммы.
 \end{enumerate}
+\end{proof}
 \subsection{Теорема о представимости рекурсивных функций Z, N, U}
 \label{sec-11-4}
 \begin{enumerate}
-\item Z
-Z(a, b) = (b = 0)
+\item $Z$
+$Z(a, b) = (b = 0)$
 \begin{itemize}
-\item Z(a) = b верно, тогда b = 0
-b = 0
-\item (b = 0)
-b = 0
-тогда Z(0) = 0, все ок
-\item \exists y.\phi(y) \& \forall a\forall b(\phi(a) \& \phi(b) \to a = b)
-Тоже как-то несложно
+\item $Z(a) = b$ верно, тогда $b = 0$\\
+$b = 0$
+\item $(b = 0)$\\
+$b = 0$\\
+Тогда $Z(0) = 0$, все ок
+\item $\exists y.\phi(y) \& \forall a\forall b(\phi(a) \& \phi(b) \to a = b)$\\
+\myworries{Тоже как-то не сложно}
 \end{itemize}
-\item N
-N(a, b) = (a = b')
+\item $N$\\
+$N(a, b) = (a = b')$
 \begin{itemize}
-\item N(a) = b, тогда a = b'
-a = b'
-\item a = b', тогда
-N(a) = b
-\item Третье не хочу
+\item $N(a) = b$, тогда $a = b'$\\
+$a = b'$
+\item $a = b'$, тогда\\
+$N(a) = b$
+\item \myworries{Третье не хочу}
 \end{itemize}
-\item U_nᵢ
-U_nᵢ(x_1\dots x_n) = (x_1 = x_1) \& (x₂ = x₂) \& \dots  \& (x_n₊_1 = xᵢ)
+\item $U_n^i$\\
+$U_n^i(x_1 \dots x_n) = (x_1 = x_1) \& (x_2 = x_2) \& \dots  \& (x_{n+1} = x_i)$
 \begin{itemize}
-\item U(..) = xᵢ, тогда x_n₊_1 = x_1
-x_1 = x_1 доказывается
-\dots 
-x_n = x_n доказывается
-x_n₊_1 = x_1 по условию
-объединяем все \&
-\item (x_1 = x_1) \& \dots .
-вытаскиваем каждый элемент и тогда видим, что
+\item $U_n^i(..) = x_i$, тогда $x_{n+1} = x_i$\\
+$x_1 = x_1$ доказывается\\
+\dots\\
+$x_n = x_n$ доказывается\\
+$x_{n+1} = x_i$ по условию\\
+объединяем все с помощью $\&$
+\item $(x_1 = x_1) \& \dots$\\
+Вытаскиваем каждый элемент и тогда видим, что
 проекция делает ровно то, что должна.
-\item \exists q.(x_n₊_1 = q)
-ХЗ
-\item \forall a\forall b(x(\dots a)\&x(\dots .b) \to a = b)
-Для конкретных a, b обявляем a = b - \top, тогда выводим
-из него конъюнкцию и навешиваем два квантора
+\item $\exists q.(x_{n+1} = q)$\\
+\myworries{ХЗ}
+\item $\forall a\forall b(x(\dots a)\&x(\dots .b) \to a = b)$\\
+Для конкретных $a$, $b$ обявляем $a = b - \top$, тогда выводим из него конъюнкцию и навешиваем два квантора
 \end{itemize}
 \end{enumerate}
 \subsection{Теорема о представимости S}
 \label{sec-11-5}
-Eсли f и g_1\dots g_n представимы, то S<f, g_1\dots g_n> представима
-Пусть F, G_1\dots G_n представляют их.
-S(a_1\dots aₘ, b) = \exists b_1\dots \exists b_n(G_1(a_1\dots a_n, b_1) \& \dots  \& Gn(a_1\dots aₘ, b_n)
-\& F(b_1\dots b_n, b))
+\begin{lemma}
+Eсли $f$ и $g_1 \dots g_n$ представимы, то $S\template{f, g_1 \dots g_n}$ представима
+\end{lemma}
+\begin{proof}
+Пусть $F$, $G_1 \dots G_n$ представляют их.\\
+$S(a_1 \dots a_m, b)$ = $\exists b_1 \dots \exists b_n(G_1(a_1\dots a_n, b_1) \& \dots \& Gn(a_1 \dots a_m, b_n) \& F(b_1\dots b_n, b))$
 \begin{itemize}
-\item Пусть S(a_1\dots a_n) = b, тогда существуют такие b_1\dots b_n, что \#каждый аргумент\#
-Поскольку f,g_1\dots g_n представимы, то доказуемы по представимости
-f(b_1\dots b_n, b)
-g_1(a_1\dots a_n, b_1)
-\dots 
-g_n(a_1\dots a_n, b_n)
-g_1 \& g₂ \& \dots  \& g_n \& f    объединили \&     "P"
-"P" \to \exists b_1."P[b_1:=b_1]" + MP
-\dots 
+\item Пусть $S(a_1 \dots a_n) = b$, тогда существуют такие $b_1 \dots b_n$, что *каждый аргумент*\\
+Поскольку $f, g_1 \dots g_n$ представимы, то доказуемы по представимости\\
+$f(b_1 \dots b_n, b)$\\
+$g_1(a_1 \dots a_n, b_1)$\\
+$\dots$\\
+$g_n(a_1 \dots a_n, b_n)$\\
+$g_1 \& g₂ \& \dots  \& g_n \& f$ объединили \& -- "$P$"\\
+"$P$" $\to \exists b_1."P[b_1:=b_1]"$ + M.P.\\
+$\dots$\\
 Ну и навесили кванторы, да.
 \item Пусть верна формула с кванторами. Тогда она и есть уже то, что надо
-\item не могу, да и вообще нигде это свойство не доказывается
+\item \myworries{не могу, да и вообще нигде это свойство не доказывается}
 \end{itemize}
+\end{proof}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Теорема о представимости R}
 \label{sec-11-6}
 Пусть f, g представимы F, G. Тогда R<f,g> представима.

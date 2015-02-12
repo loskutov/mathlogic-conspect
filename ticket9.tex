@@ -126,7 +126,7 @@ $a_n \% (n + 1) * c + 1$\\
 Но это и есть $\beta$-функция:\\
 $a_i = \beta(b,c,i)$
 \end{proof}
-\subsubsection{Представимость \texorpdfstring{$\beta$}{бета}-функции Гёделя в ФА}
+\subsubsection{Представимость \emph{\texorpdfstring{$\beta$}{бета}\emph{•}}-функции Гёделя в ФА}
 \label{sec-11-3-4}
 \begin{lemma}
 $\beta$-функция представима в ФА отношением\\
@@ -222,34 +222,40 @@ $\dots$\\
 \item \myworries{не могу, да и вообще нигде это свойство не доказывается}
 \end{itemize}
 \end{proof}
-\begin{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Теорема о представимости R}
 \label{sec-11-6}
-Пусть f, g представимы F, G. Тогда R<f,g> представима.
-f: N^n\to N, g:N^n⁺²\to N
-r(x_1\dots x_n, k, a) =
-   \exists b\exists c(
-        \exists k(β(b, c, 0, k) \& \phi(x_1\dots x_n, k))
-        \& B(b, c, x_n₊_1, a)
-        \& \forall k(k<x_n₊_1 \to \exists d\exists e(B(b,c,k,d)\&B(b,c,k',e)\&G(x_1\dots x_n,k,d,e))))
-Единственная возможность осознать -- внимательно прочесть формулу.
-Тут β-функция используется в качестве функии отображения нашего шага
-вычисления рекурсии в результат, типа
-0 - F(\dots )
-1 - G(\dots )
-\dots 
-n - G(\dots )
-\subsection{Теорема о представимости μ}
+\begin{theorem}
+$R$ представима
+\end{theorem}
+\begin{proof}
+Пусть $F$, $G$ представляют $f$, $g$. Тогда $R\template{f, g}$ представима.\\
+$f$: $N^n \to N$, $g$: $N^{n+2} \to N$\\
+$r$ - представление $R$:\\
+$r(x_1 \dots x_n, k, a) =$
+   $\exists b\exists c($
+        $\exists k(\beta(b, c, 0, k) \& \phi(x_1\dots x_n, k))$
+        $\& B(b, c, x_n₊_1, a)$\\
+        $\& \forall k(k<x_n₊_1 \to \exists d\exists e(B(b,c,k,d)\&B(b,c,k',e)\&G(x_1\dots x_n,k,d,e))))$\\
+Единственная возможность осознать -- внимательно прочесть формулу.\\
+Тут $\beta$-функция используется в качестве функии отображения нашего шага вычисления рекурсии в результат, типа\\
+$0 - F(\dots )$\\
+$1 - G(\dots )$\\
+$\dots $\\
+$n - G(\dots )$
+\end{proof}
+\subsection{Теорема о представимости \texorpdfstring{$\mu$}{мю}}
 \label{sec-11-7}
-f: N^{n+1}\to N представима F, тогда μ<f> представима M
-Μ<F>(x_1\dots x_n₊_1) = F(x_1\dots x_n, x_n₊_1, 0) \& \forall y((y < x_n₊_1) \to \lnot F(x_1\dots x_n, y, 0))
+\begin{theorem}
+$\mu$ представима
+\end{theorem}
+\begin{proof}
+$f$: $N^{n+1} \to N $ представима $F$, тогда $\mu \template{f}$ представима $M$:\\
+$M\template{F}(x_1 \dots x_{n+1}) = F(x_1 \dots x_n, x_{n+1}, 0) \& \forall y((y < x_{n+1}) \to \lnot F(x_1 \dots x_n, y, 0))$
 \begin{itemize}
-\item μ<f>(x_1\dots x_n) = x_n₊_1, тогда x_n₊_1 - минимальное k, такое что f(x_1..x_n,k) = 0
-то есть имеем
-F(x_1\dots x_n, x_n₊_1, 0)
-\forall x.(k < x \to \lnot F(x_1\dots x_n, k, 0))
+\item $\mu \template{f}(x_1 \dots x_n) = x_{n+1}$, тогда $x_{n+1}$ - минимальное $k$, такое что $f(x_1..x_n,k) = 0$\\
+то есть имеем $F(x_1\dots x_n, x_n₊_1, 0)$\\
+$\forall x.(k < x \to \lnot F(x_1 \dots x_n, k, 0))$\\
 Просто объединим конъюнкцией
-\item обратно ей же и разъединим
+\item Обратно ей же и разъединим
 \end{itemize}
-\end{comment}
+\end{proof}

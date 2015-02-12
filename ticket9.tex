@@ -68,15 +68,15 @@ $\lnot a(x_1\dots x_n, 1)$\\
 \end{proof}
 \subsection{\texorpdfstring{$\beta$}{Бета}-функция Гёделя, китайская теорема об остатках}
 \label{sec-11-3}
-$\beta(b, c, i) = b \% (1 + c * (1 + i))$\\
-Где $\%(a, b) = d$, что $\forall m . (d + m * b = a), m \geq 0, 0 \leq d \leq b$
+$\beta(b, c, i) = b \perc (1 + c * (1 + i))$\\
+Где $\perc(a, b) = d$, что $\forall m . (d + m * b = a), m \geq 0, 0 \leq d \leq b$
 
 \subsubsection{Китайская теорема об остатках}
 \label{sec-11-3-1}
 \begin{theorem}
 $n_1\dots n_k$ - попарно взаимно простые целый числа\\
 $r_1\dots r_k$ - любые целые числа, что $0 \leq r_1 < n_1$\\
-Тогда: $\exists b \forall i  r_1 = b \% n_k$
+Тогда: $\exists b \forall i  r_1 = b \perc n_k$
 \end{theorem}
 \begin{proof}
 Без доказательства
@@ -109,7 +109,7 @@ $k_1 \leq c < 1 + c * (i + 1) = \Gamma_1$
 $(i + 1) * c + 1$ - элемент Геделевой последовательности.
 \end{lemma}
 \begin{proof}
-$<a_0 \ldots a_n> \in N \to \exists b \exists c (a_k=\beta(b,c,i))$ - $\beta$-функция кодирует
+$\langle a_0, \dotsc, a_n \rangle \in N \to \exists b \exists c (a_k=\beta(b,c,i))$ - $\beta$-функция кодирует
 последовательность натуральных чисел и может
 доставать по индексу $i$
 
@@ -118,15 +118,15 @@ $a_0 \ldots a_n$  - последовательность натуральных 
 если $c \geq max(a_0 \ldots a_n)$, то $a_k < (i + 1) * c + 1$\\
 Но по свойству $\Gamma$ элементы попарно взаимно просты
 тогда сравнения:\\
-$a_0 \% (0+1)*c+1$\\
-$a_1 \% (1+1)*c+1$\\
+$a_0 \perc (0+1)*c+1$\\
+$a_1 \perc (1+1)*c+1$\\
 $\ldots$\\
-$a_n \% (n + 1) * c + 1$\\
-Имеют общее решение $b$ по китайской теореме об остатках, тогда $a_1 = b \% (i+1)*c + 1$\\
+$a_n \perc (n + 1) * c + 1$\\
+Имеют общее решение $b$ по китайской теореме об остатках, тогда $a_1 = b \perc (i+1)*c + 1$\\
 Но это и есть $\beta$-функция:\\
 $a_i = \beta(b,c,i)$
 \end{proof}
-\subsubsection{Представимость \emph{\texorpdfstring{$\beta$}{бета}\emph{•}}-функции Гёделя в ФА}
+\subsubsection{Представимость \texorpdfstring{$\beta$}{бета}-функции Гёделя в ФА}
 \label{sec-11-3-4}
 \begin{lemma}
 $\beta$-функция представима в ФА отношением\\

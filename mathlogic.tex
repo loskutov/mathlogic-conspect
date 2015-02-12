@@ -88,9 +88,9 @@
 \DeclareRobustCommand{\divby}{%
   \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
 }
-%\newenvironment{epigraph}% 
-%{\begin{list}{}{\setlength{\leftmargin}{0.3\textwidth}}\item[]}% 
-%{\end{list}} 
+%\newenvironment{epigraph}%
+%{\begin{list}{}{\setlength{\leftmargin}{0.3\textwidth}}\item[]}%
+%{\end{list}}
 
 \author{Daniyar Itegulov, Aleksei Latyshev, Ignat Loskutov}
 \date{\today}
@@ -111,7 +111,7 @@
 %Должно отображаться корректно: $x_1$,x₂x₃x_n, θ, \exists , ∑, ∉
 \epigraph{%
     лан, всё не книжку верстаем))))000}
-  {некто Игнат Лоскутов о качестве вёрстки}  
+  {некто Игнат Лоскутов о качестве вёрстки}
 \epigraph{%
     данияр лолка пиздос)))))}
   {аноним о всяких там хех латехерах}
@@ -349,7 +349,7 @@ G$_{\text{\phi}}$(x_1\dots x_n, b, p) = 0, то есть p - вывод \phi(x_1
 \item Теория ω-непротиворечива, если из %\forall \phi(x) \vdash \phi(x\textasciitilde{})$ следует
 ⊬ \exists p\lnot \phi(p). Проще говоря, если мы взяли
 формулу, то невозможно вывести одновременно \exists x\lnot A(x)
-и A(0), A(1), \dots 
+и A(0), A(1), \dots
 \item Лемма о w-\# и обычной непротиворечивости
 Если теория w-непротиворечива, то она непротиворечива
 \phi = x=x \to x=x
@@ -583,7 +583,7 @@ $\vdash \lnot π(γ), \vdash π(γ)  \to ←$
 \subsection{Теория множеств}
 \label{sec-15-1}
    Значит это такая теория первого порядка.
-   В сигнатуре модели есть один пред.символ - \in 
+   В сигнатуре модели есть один пред.символ - \in
    Добавляем связку a \leftrightarrow b = (a \to b) \& (b \to a)
    σ \in Θ => \forall x(x \in σ \to x \in Θ)
 o   σ = Θ => σ \in Θ \& Θ \in σ
@@ -726,7 +726,7 @@ $\epsilon_0$ = Upb(w, w$^{\text{w}}$, w$^{\text{w}}$$^{\text{w}}$, w$^{\text{w}}
 \label{sec-16-2}
 \subsubsection{Стабилизация убывающей последовательности}
 \label{sec-16-2-1}
-Допустим, что есть убывающая последовательность ординалов x_1,x₂\dots 
+Допустим, что есть убывающая последовательность ординалов x_1,x₂\dots
 Возьмем ординал x_1 + 1 = x₀. Тогда \{x_1, x₂, \dots \} \in x₀. x₀ не пусто,
 значит там есть минимальный элемент по определению порядка на ординале.
 Пусть этот элемент - m. Тогда поскольку m \in x₀, то m = x_i для какого-то
@@ -935,7 +935,7 @@ a истинна, если
 
 \begin{enumerate}
 \item Формулы:
-Оставим связки \forall x, \lor , \lnot 
+Оставим связки \forall x, \lor , \lnot
 Заметим, что \{\lor , \lnot \} полно для \{0, 1\}.
 \item Доказательство
 Доказательством является дерево утверждений, в
@@ -977,7 +977,7 @@ a\lor γ
 \uline{\lnot a(t)\lor γ}
 \lnot \forall x.a(x)\lor γ
 \item Бесконечная индукция
-\uline{a(0\textasciitilde{})\lor γ$_{\text{a}}$(1\textasciitilde{})\lor γ} \dots  \uline{a(r\textasciitilde{})\lor γ}\dots 
+\uline{a(0\textasciitilde{})\lor γ$_{\text{a}}$(1\textasciitilde{})\lor γ} \dots  \uline{a(r\textasciitilde{})\lor γ}\dots
 \forall xa(x)\lor γ
 \end{enumerate}
 \item Сечение (для облегчения жизни)
@@ -1139,7 +1139,7 @@ $\lnot A \lor B(0), \lnot A \lor B(1), \dots  \vdash \lnot A \lor \forall x.B$  
 \item A(t) \to B => \exists x.A(x) \to B
 $\lnot A \lor B \vdash \lnot \lnot \forall x.(\lnot A(x)) \to B$
 Заменим все вхождения свободной перменной t в ФА на конкретные.
-Получим счетное мн-во д-в \lnot A(0) \lor B, \lnot A(1) \lor B, \dots 
+Получим счетное мн-во д-в \lnot A(0) \lor B, \lnot A(1) \lor B, \dots
 по беск. индукции
 \forall x.\lnot A(x) \lor B
 \lnot \lnot \forall x.\lnot A(x) \lor B -  навесили двойное отрицание

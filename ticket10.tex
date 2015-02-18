@@ -139,35 +139,38 @@ $steps(\langle \const{start\_state} \rangle, \epsilon , pb, pc, tb, tc) =$\\
 $\mu \langle \beta(tb, tc, \plog(R\template{f, g}, 1))\rangle (\langle \const{start\_state} \rangle, \epsilon , pb, pc, tb, tc)$\\
 Она найдет такое минимальное $k$, что состояние $\plog(R\template{f, g}(args, k), 1)$ терминально.
 \end{itemize}
-\begin{comment}
 \subsubsection{Выражение программы по проверке доказательства в машине тьюринга}
 \label{sec-12-5-2}
 \begin{itemize}
-\item Emulate(input, prog) = \plog(R<f,g>(<`S, input, 0>,  , pb, pc, tb, tc, steps(-//-)), 1) == F
-Функция проверяет, правда ли получившееся терминальное состояние - ок.
-Можем давать программу такую, что она заканчивается в терминальном F(inish)
-или в терминальном FAIL
-Дает в качестве аргумента функцию перехода, pb, pc выражают prog
-\item Proof(term, proof) = Emulate(proof, MY$_{\text{PROOFCHECKER}}$) \&\& (\plog(proof, len(proof)) = term)
-Проверяет, что доказательство p заканчивается корректно и его последний
-элемент - то, что мы доказываем.
-\item Любая представимая в ФА ф-я является рекурсивной
-Пусть f представима
-Пусть f(x_1\dots x_n) = b, тогда $\vdash \phi(x_1\textasciitilde{}\dots x_n\textasciitilde{}, b\textasciitilde{})$
-Всегда можно построить рекурсивную функцию G$_{\text{\phi}}$(x_1\dots x_n, b, p),
-утверждающую, что p - гёделев номер вывода предиката \phi(x_1\textasciitilde{}\dots x_n\textasciitilde{}, b\textasciitilde{})
-Мы делаем это обычным перебором чисел, проверяем вывод нашей
-программой из домашнего задания, выраженную в тьюринге, а потом в
-рекурсивных функциях.
-Тогда f в рекурсивных функциях выражается так:
-f(x_1\dots x_n) = \plog(μ<S<G$_{\text{\phi}}$, U_n₊_1,_1,\dots  U_n₊_1,_n,
-\plog(U_n₊_1,_n₊_1, 1),
-\plog(U_n₊_1,_n₊_1, 2)>>(x_1\dots x_n), 1)
-Такая функция берет \plog(1) от первого такого минимального геделева
-номера k (геделева пара из двух элементов - <b, p>)), что
-S<G$_{\text{\phi}}$, U\dots .>(x_1\dots x_n, k) = 0. Это значит, что
-G$_{\text{\phi}}$(x_1\dots x_n, \plog(k, 1), \plog(k, 2)) = 0, это значит, что
-G$_{\text{\phi}}$(x_1\dots x_n, b, p) = 0, то есть p - вывод \phi(x_1\textasciitilde{}\dots x_n\textasciitilde{}, b\textasciitilde{}).
-Этот геделев номер - b
+\item $Emulate(input, prog) = \plog(R\template{f, g}(\langle \Godel{S}, input, 0 \rangle,  , pb, pc, tb, tc, steps(-//-)), 1) == F$\\
+Функция проверяет, правда ли получившееся терминальное состояние - ок.\\
+Можем давать программу такую, что она заканчивается в терминальном $F(inish)$ или в терминальном $FAIL$\\
+Дает в качестве аргумента функцию перехода, $pb$, $pc$ выражают $prog$
+\item
+$\begin{multlined}[t]
+Proof(term, proof) = Emulate(proof, MY\_PROOFCHECKER) \\
+\&\& (\plog(proof, len(proof)) = term)
+\end{multlined}$\\
+Проверяет, что доказательство $p$ заканчивается корректно и его последний элемент -- то, что мы доказываем.
+\item Любая представимая в ФА функция является рекурсивной\\
+Пусть $f$ представима\\
+Пусть $f(x_1, \dotsc, x_n) = b$, тогда $\vdash \phi(\overline{x_1}, \dotsc \overline{x_n}, \overline{b})$\\
+Всегда можно построить рекурсивную функцию $G_{\phi(x_1, \dotsc, x_n, b, p)}$, утверждающую, что $p$ -- гёделев номер вывода предиката $\phi(\overline{x_1}, \dotsc, \overline{x_n}, \overline{b})$\\
+Мы делаем это обычным перебором чисел, проверяем вывод нашей программой из домашнего задания, выраженную в тьюринге, а потом в
+рекурсивных функциях.\\
+Тогда $f$ в рекурсивных функциях выражается так:
+$f(x_1\dots x_n) = \plog(\mu\template{S\template{G_{\phi}, U_{n+1}^1, \dotsc, U_{n+1}^n, $\\
+$\plog(U_{n+1}^{n+1}, 1),$\\
+$\plog(U_{n+1}^{n+1}, 2)}}(x_1, \dotsc, x_n), 1)$\\
+Такая функция берет $\plog(1)$ от первого такого минимального геделева номера $k$ (геделева пара из двух элементов - $\langle b, p \rangle$)), что:
+\begin{gather*}
+S\template{G_{\phi}, U \dots}(x_1, \dotsc, x_n, k) = 0
+\shortintertext{Это значит, что:}
+G_{\phi}(x_1, \dotsc, x_n, \plog(k, 1), \plog(k, 2)) = 0 \\
+\shortintertext{И значит, что:}
+G_{\phi}(x_1, \dotsc, x_n, b, p) = 0
+\shortintertext{То есть $p$ -- вывод:}
+\phi(\overline{x_1}, \dotsc, \overline{x_n}, \overline{b}). \\
+\shortintertext{Этот гёделев номер -- $b$}
+\end{gather*}
 \end{itemize}
-\end{comment}

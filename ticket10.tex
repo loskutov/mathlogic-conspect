@@ -117,9 +117,9 @@ $st$, $tape$, $pos$ -- геделевы нумералы, $st$ -- нумерал
 Возвращает ленту, в которой удален символ в позиции op, и добавлен новый символ в эту же позицию.
 \end{itemize}
 \item $f$ -- возвращает полное состояние машины\\
-$f(\langle start_{state} \rangle, \epsilon , pb, pc, tb, tc) = \langle start_{state} \rangle$
-\item $g$ -- возвращает новое полное состояние из машины после перехода (пометка: $0$ - $nothing$, $1$ - $right$, $2$ - $left$ все фукнции вызываются с аргументом $prev, \langle start_{state} \rangle$ не используется)\\
-$g(\langle start_{state} \rangle, \epsilon , pb, pc, tb, tc, y, prev) =$
+$f(\langle start\_state \rangle, \epsilon , pb, pc, tb, tc) = \langle start\_state \rangle$
+\item $g$ -- возвращает новое полное состояние из машины после перехода (пометка: $0$ - $nothing$, $1$ - $right$, $2$ - $left$ все фукнции вызываются с аргументом $prev, \langle start\_state \rangle$ не используется)\\
+$g(\langle start\_state \rangle, \epsilon , pb, pc, tb, tc, y, prev) =$
 \begin{center}
 \begin{tabular}{lrl}
 Condition & Result & Descr\\

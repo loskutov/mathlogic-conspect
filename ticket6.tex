@@ -5,17 +5,17 @@
 \label{sec-8-1}
 Противоречивая теория – теория, в которой можно вывести p, ¬p.
 \begin{lemma}
-Теория противоречива $\Leftrightarrow$ в ней выводится $a \& \neg a$
+Теория противоречива $\Leftrightarrow$ в ней выводится $a \land \neg a$
 \end{lemma}
 \begin{proof}
-$\Leftarrow$ Если выводится $a \& \neg a$, то противоречива -- очевидно через аксиомы\\
-$\Rightarrow$ Если противоречива, то выводится $a \& \neg a$\\
+$\Leftarrow$ Если выводится $a \land \neg a$, то противоречива -- очевидно через аксиомы\\
+$\Rightarrow$ Если противоречива, то выводится $a \land \neg a$\\
 \begin{tabular}{lll}
 (1)& $\neg \alpha$& Допущение\\
 (2)& $\alpha$& Допущение\\
-(3)& $\alpha \to \neg \alpha \to (\alpha \& \neg \alpha)$& Сх. акс. 10\\
-(4)& $\neg \alpha \to (\alpha \& \neg \alpha)$& M.P. 1,3\\
-(5)& $\alpha \& \neg \alpha$& M.P. 2,4\\
+(3)& $\alpha \to \neg \alpha \to (\alpha \land \neg \alpha)$& Сх. акс. 10\\
+(4)& $\neg \alpha \to (\alpha \land \neg \alpha)$& M.P. 1,3\\
+(5)& $\alpha \land \neg \alpha$& M.P. 2,4\\
 \end{tabular}\\
 \end{proof}
 Заметим, что всякое подмножество непротиворечивого множества непротиворечиво.\\
@@ -31,7 +31,7 @@ $\Rightarrow$ Если противоречива, то выводится $a \&
 Давайте добавлять недостающие формулы в $\Gamma$ -- если есть формула $\alpha$, добавим $\alpha$ или $\neg \alpha$ в зависимости от того, является ли $\Gamma \cup \alpha$ или $\Gamma \cup \neg \alpha$ противоречивым или нет (выберем непротиворечивый вариант). Одно всегда верно, потому что:
 \begin{enumerate}
 \item $\Gamma \cup \alpha$, $\Gamma \cup \neg \alpha$ противоречивы обе $\Rightarrow$ Мы можем доказать, что $\Gamma$ изначально было противоречиво
-\item $\Gamma \cup \alpha$, $\Gamma \cup \neg \alpha$ не противоречивы обе $\Rightarrow$ Тогда можно сказать, что $\alpha \to \neg \alpha \to \alpha \& \neg \alpha$.
+\item $\Gamma \cup \alpha$, $\Gamma \cup \neg \alpha$ не противоречивы обе $\Rightarrow$ Тогда можно сказать, что $\alpha \to \neg \alpha \to \alpha \land \neg \alpha$.
 \end{enumerate}
 \end{proof}
 \subsection{Условие о интерпретации непротиворечивого мн-ва}
@@ -67,23 +67,23 @@ $\llbracket f_1 (c_1, f_2(c_2)) \rrbracket = \text{<<$f_1 (c_1, f_2(c_2))$>>}$
 Если атомарная формула истинна, то лежит в $\Gamma$
 \item Переход:
 \begin{enumerate}
-\item $\alpha \& \beta$
+\item $\alpha \land \beta$
 
-Если $\alpha \& \beta$ лежит в $\Gamma$, то оно истинно по определению
+Если $\alpha \land \beta$ лежит в $\Gamma$, то оно истинно по определению
 \begin{itemize}
-\item Пусть $\llbracket \alpha \& \beta \rrbracket = \texttt{И}$, тогда покажем, что $\alpha \& \beta \in \Gamma$.\\
-По таблице истинности $\&$ ясно, что $\llbracket \alpha \rrbracket = \texttt{И}$ и $\llbracket \beta \rrbracket = \texttt{И}$. Тогда $\alpha$ и $\beta$ лежат в $\Gamma$ по индукционному предположению. Тогда с помощью $\alpha \to \beta \to \alpha \& \beta$ можно показать, что и $\alpha \& \beta \in \Gamma$.
-\item Пусть $\llbracket \alpha \& \beta \rrbracket = \texttt{Л}$, тогда покажем, что $\neg(\alpha \& \beta) \in \Gamma$.\\
-По таблице истинности $\&$ ясно, что $\llbracket \alpha \rrbracket = \texttt{Л}$ или $\llbracket \beta \rrbracket = \texttt{Л}$. Для определенности возьмем, что $\alpha$ -- ложь. Тогда $\neg \alpha$ лежат в $\Gamma$ по индукционному предположению.\\
-Докажем, что $\neg \alpha \vdash \neg (\alpha \& \beta)$:\\
+\item Пусть $\llbracket \alpha \land \beta \rrbracket = \texttt{И}$, тогда покажем, что $\alpha \land \beta \in \Gamma$.\\
+По таблице истинности $\land$ ясно, что $\llbracket \alpha \rrbracket = \texttt{И}$ и $\llbracket \beta \rrbracket = \texttt{И}$. Тогда $\alpha$ и $\beta$ лежат в $\Gamma$ по индукционному предположению. Тогда с помощью $\alpha \to \beta \to \alpha \land \beta$ можно показать, что и $\alpha \land \beta \in \Gamma$.
+\item Пусть $\llbracket \alpha \land \beta \rrbracket = \texttt{Л}$, тогда покажем, что $\neg(\alpha \land \beta) \in \Gamma$.\\
+По таблице истинности $\land$ ясно, что $\llbracket \alpha \rrbracket = \texttt{Л}$ или $\llbracket \beta \rrbracket = \texttt{Л}$. Для определенности возьмем, что $\alpha$ -- ложь. Тогда $\neg \alpha$ лежат в $\Gamma$ по индукционному предположению.\\
+Докажем, что $\neg \alpha \vdash \neg (\alpha \land \beta)$:\\
 \begin{tabular}{lll}
 (1) & $\neg\alpha$ & Предположение\\
-(2) & $\neg\alpha \rightarrow \alpha\&\beta\rightarrow\neg\alpha$ & Сх. акс. 1\\
-(3) & $\alpha\&\beta \rightarrow \neg\alpha$ & M.P. 1,2\\
-(4) & $\alpha \& \beta \rightarrow \alpha$ & Сх. акс. 4\\
-(5) & $(\alpha \& \beta \rightarrow \alpha) \rightarrow (\alpha \& \beta \rightarrow \neg\alpha) \rightarrow \neg(\alpha \& \beta)$ & Сх. акс. 9\\
-(6) & $(\alpha \& \beta \rightarrow \neg\alpha) \rightarrow \neg(\alpha \& \beta)$ & M.P. 5,4\\
-(7) & $\neg(\alpha \& \beta)$ & M.P. 6,3
+(2) & $\neg\alpha \rightarrow \alpha\land\beta\rightarrow\neg\alpha$ & Сх. акс. 1\\
+(3) & $\alpha\land\beta \rightarrow \neg\alpha$ & M.P. 1,2\\
+(4) & $\alpha \land \beta \rightarrow \alpha$ & Сх. акс. 4\\
+(5) & $(\alpha \land \beta \rightarrow \alpha) \rightarrow (\alpha \land \beta \rightarrow \neg\alpha) \rightarrow \neg(\alpha \land \beta)$ & Сх. акс. 9\\
+(6) & $(\alpha \land \beta \rightarrow \neg\alpha) \rightarrow \neg(\alpha \land \beta)$ & M.P. 5,4\\
+(7) & $\neg(\alpha \land \beta)$ & M.P. 6,3
 \end{tabular}
 \end{itemize}
 \item $\alpha \vee \beta$
@@ -111,7 +111,7 @@ $\llbracket f_1 (c_1, f_2(c_2)) \rrbracket = \text{<<$f_1 (c_1, f_2(c_2))$>>}$
 Тогда возьмем новую константу $d_{i+1}^j$ и добавим $a[x:=d_{i+1}^j]$ к $\Gamma_{i+1}$.
 \end{enumerate}
 
-Заметим, что сами формулы с кванторами мы не выкидываем -- ведь в будущем появятся новые формулы, и процесс для уже использованных кванторных формул нужно будет повторить. Покажем, что полученные множества остаются непротиворечивыми. $\Gamma_i$ непротиворечиво, а $\Gamma_{i+1}$ противоречиво, тогда $\Gamma_{i+1} \vdash \alpha \& \neg \alpha$, тогда выпишем конечное доказательство, найдем посылки, новые в $\Gamma_{i+1}$, которых нету в $\Gamma_{i}$, выпишем их и впихнем направо по теореме о дедукции: $\Gamma_{i} \vdash \gamma_1 \to \gamma_2 \to \gamma_3 \to \dots \to \gamma_n \to \beta \& \neg \beta$ Новые посылки у нас получаются только из пунктов 2 и 3.
+Заметим, что сами формулы с кванторами мы не выкидываем -- ведь в будущем появятся новые формулы, и процесс для уже использованных кванторных формул нужно будет повторить. Покажем, что полученные множества остаются непротиворечивыми. $\Gamma_i$ непротиворечиво, а $\Gamma_{i+1}$ противоречиво, тогда $\Gamma_{i+1} \vdash \alpha \land \neg \alpha$, тогда выпишем конечное доказательство, найдем посылки, новые в $\Gamma_{i+1}$, которых нету в $\Gamma_{i}$, выпишем их и впихнем направо по теореме о дедукции: $\Gamma_{i} \vdash \gamma_1 \to \gamma_2 \to \gamma_3 \to \dots \to \gamma_n \to \beta \land \neg \beta$ Новые посылки у нас получаются только из пунктов 2 и 3.
 
 \begin{enumerate}
 \item $\gamma_1 = a[x:=\theta_1]$ из $\forall x (a)$. Тогда рассмотрим доказательство:\\
@@ -119,8 +119,8 @@ $\llbracket f_1 (c_1, f_2(c_2)) \rrbracket = \text{<<$f_1 (c_1, f_2(c_2))$>>}$
 $(1)$ & $\forall x \alpha \rightarrow \alpha [x := \theta]$ & Сх. акс. $\forall$\\
 $(2)$ & $\forall x \alpha$ & $\forall x \alpha$ из $\Gamma_g$\\
 $(3)$ & $\alpha [x := \theta]$ & M.P. $2,1$\\
-$(4 \dots k)$ & $\alpha [x := \theta] \rightarrow (\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \& \neg \beta)$ & Исх. формула\\
-$(k+1)$ & $\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \& \neg \beta$ & M.P. $3,k$
+$(4 \dots k)$ & $\alpha [x := \theta] \rightarrow (\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \land \neg \beta)$ & Исх. формула\\
+$(k+1)$ & $\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \land \neg \beta$ & M.P. $3,k$
 \end{tabular}
 \item $\gamma_1 = a[x:=d_{i+1}^k]$ из $\exists x(a)$ выберем переменную, не участвующую в выводе противоречия -- $z$.
     Заменим все вхождения $d^k$ в д-ве на $z$.
@@ -129,11 +129,11 @@ $(k+1)$ & $\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \& \neg \beta$ 
     отсутствует в $\gamma_2,\dots$ + мы можем правильно выбрать $b$, чтобы и в нем отсутствовала $d_{i+1}^k$.
     Значит мы можем применить правило для выведения $\exists$:\\
 \begin{tabular}{lll}
-$(1 \dots k)$ & $\alpha [x := y] \rightarrow (\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \& \neg \beta)$ & Исх. формула\\
-$(k+1)$ & $\exists y \alpha [x := y] \rightarrow (\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \& \neg \beta)$ & Правило для $\exists$\\
+$(1 \dots k)$ & $\alpha [x := y] \rightarrow (\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \land \neg \beta)$ & Исх. формула\\
+$(k+1)$ & $\exists y \alpha [x := y] \rightarrow (\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \land \neg \beta)$ & Правило для $\exists$\\
 $(k+2)$ & $\exists x \alpha$ & Т.к. $\exists x \alpha$ из $\Gamma_g$ \\
 $(k+3 \dots l)$ & $\exists y \alpha [x := y]$ & Доказуемо \\
-$(l+1)$ & $\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \& \neg \beta$ & M.P. $l, k+1$
+$(l+1)$ & $\gamma_2 \rightarrow \dots \gamma_n \rightarrow \beta \land \neg \beta$ & M.P. $l, k+1$
 \end{tabular}
 \end{enumerate}
 Возьмем $\Gamma_0 = \Gamma$. $\Gamma^* = \cup \Gamma_i$. $\Gamma^*$ также не противоречиво, потому что д-во использует конечное количество предположений, добавленных на каком-то шаге $j$ максимум, значит множество $Γ_j$ тоже противоречиво, что невозможно по условию.

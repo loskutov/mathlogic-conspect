@@ -20,7 +20,7 @@ $,$        & $7$ & \\
 $\lnot$    & $9$ & \\
 $\to$      & $11$ & \\
 $\lor$     & $13$ & \\
-$\&$       & $15$ & \\
+$\land$    & $15$ & \\
 $\forall$  & $17$ & \\
 $\exists$  & $19$ & \\
 $x_k$      & $21 + 6 \cdot k$ & переменные\\
@@ -125,9 +125,9 @@ $g(\langle start\_state \rangle, \epsilon , pb, pc, tb, tc, y, prev) =$
 Condition & Result & Descr\\
 \hline
 $dir = 0$        & $\langle st, repl, op \rangle$ & nothing\\
-$dir = 1 \& len(repl) = op$ & $\langle st, repl @ 2^{\epsilon}, op + 1 \rangle$ & tape end\\
+$dir = 1 \land len(repl) = op$ & $\langle st, repl @ 2^{\epsilon}, op + 1 \rangle$ & tape end\\
 $dir = 1$        & $\langle st, repl, op + 1 \rangle$ & move right\\
-$dir = 2 \& op = 0$    & $\langle st, 2^{\epsilon} @ repl, op - 1$ & tape start\\
+$dir = 2 \land op = 0$    & $\langle st, 2^{\epsilon} @ repl, op - 1$ & tape start\\
 $dir = 2$      & $\langle st, repl, op - 1 \rangle$ & move left\\
 \hline
 \end{tabular}

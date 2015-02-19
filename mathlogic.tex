@@ -7,7 +7,7 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{proof} % M. P. и его друзья
-\usepackage[pdftitle={Курс матлогики по Штукенбергу Д. Г.}]{hyperref}
+\usepackage[linkbordercolor={0 0 1}, pdftitle={Курс матлогики по Штукенбергу Д. Г.}]{hyperref}
 \usepackage{amsthm}
 \usepackage{comment}
 \usepackage{stmaryrd} % ⟦⟧
@@ -46,9 +46,13 @@
 \renewcommand{\geq}{\geqslant} % ⩾
 \renewcommand{\phi}{\varphi}
 \renewcommand{\epsilon}{\varepsilon}
+
+% Declaring some new operators
 \DeclareMathOperator{\plog}{plog}
 \DeclareMathOperator{\Int}{Int}
 \DeclareMathOperator{\Proof}{Proof}
+\renewcommand{\land}{\mathbin{\&}}
+\newcommand{\perc}{\mathbin{\%}}
 
 \newcommand{\ltemplate}{\begin{picture}(5,7)
 \put(.5,4){\line(1,-1){5}}
@@ -86,10 +90,6 @@
 \DeclareRobustCommand{\divby}{%
   \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
 }
-\newcommand{\perc}{\mathbin{\%}}
-%\newenvironment{epigraph}%
-%{\begin{list}{}{\setlength{\leftmargin}{0.3\textwidth}}\item[]}%
-%{\end{list}}
 
 \author{Daniyar Itegulov, Aleksei Latyshev, Ignat Loskutov}
 \date{\today}
@@ -105,6 +105,7 @@
 \newtheorem{lemma}[theorem]{Лемма}
 
 \maketitle
+\setcounter{tocdepth}{2}
 \tableofcontents
 
 %Должно отображаться корректно: $x_1$,x₂x₃x_n, θ, \exists , ∑, ∉
@@ -118,11 +119,8 @@
 Mykhail Volkhov, 2538, 2014Sep-2015Jan\\
 Я не отвечаю за верность написанного - много информации
 я придумал сам, много достал из недостоверных источников.
-\renewcommand{\thesection}{\Roman{section}}
 \include{base}
 \include{defenitions}
-\setcounter{section}{0}
-\renewcommand{\thesection}{\arabic{section}}
 \include{ticket1}
 \include{ticket2}
 \include{ticket3}

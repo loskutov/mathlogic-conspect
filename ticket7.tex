@@ -37,8 +37,8 @@ $\langle D, F, P\rangle$, где F -- списки оценок для 0-мес�
 \item $0 \in N$
 \item $x \in N, succ(x) \in N$
 \item $\nexists x \in N : (S(x) = 0)$
-\item $(succ(a) = c \& succ(b) = c) \to a = b$
-\item $P(0) \& \forall n.(P(n) \to P(succ(n))) \to \forall n.P(n)$
+\item $(succ(a) = c \land succ(b) = c) \to a = b$
+\item $P(0) \land \forall n.(P(n) \to P(succ(n))) \to \forall n.P(n)$
 \end{enumerate}
 \subsection{Формальная арифметика -- аксиомы, схемы, правила вывода}
 \label{sec-9-3}
@@ -71,7 +71,7 @@ $\langle D, F, P\rangle$, где F -- списки оценок для 0-мес�
 \item $a + 0 = a$
 \item $a * 0 = 0$
 \item $a * b' = a * b + a$
-\item $\phi[x:=0] \& \forall x.(\phi \to \phi[x:=x']) \to \phi$
+\item $\phi[x:=0] \land \forall x.(\phi \to \phi[x:=x']) \to \phi$
 \end{enumerate}
 \subsubsection{a = a}
 \label{sec-9-3-1-1}

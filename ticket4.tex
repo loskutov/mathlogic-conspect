@@ -8,7 +8,7 @@ $V$ -- множество вынужденных переменных\\
 \emph{Модель Крипке} -- это $\langle W, \leq, v\rangle$.\\
 Теперь можно определить истинность любой формулы (в данном мире) индукцией по построению формулы. Правила:
 \begin{itemize}
-\item $w \Vdash A \& B \Leftrightarrow w \Vdash A$ и $w \Vdash B$;
+\item $w \Vdash A \land B \Leftrightarrow w \Vdash A$ и $w \Vdash B$;
 \item $w \Vdash A \vee B \Leftrightarrow w \Vdash A$ или $w \Vdash B$;
 \item $w \Vdash A \rightarrow B \Leftrightarrow$ в любом мире $u \geq w$, в котором истинна $A$, так же истинна и $B$;
 \item $w \Vdash \neg A \Leftrightarrow$ ни в каком мире $u \geq w$ формула $A$ не является истинной;
@@ -53,20 +53,20 @@ $V$ -- множество вынужденных переменных\\
 $M \vdash a \Rightarrow a \in M$
 \end{lemma}
 \begin{proof}
-Пусть это не так. Рассмотрим $a \rightarrow a \vee \neg a$. Раз $M \vdash a$, то $M \vdash a \vee \neg a$. Т.к. $a \notin M$, то $\neg a \in M$ по определению дизъюнктивности $M$. Но тогда из $M \vdash a$ и $M \vdash \neg a$ мы можем доказать, что $M \vdash a \& \neg a$.
+Пусть это не так. Рассмотрим $a \rightarrow a \vee \neg a$. Раз $M \vdash a$, то $M \vdash a \vee \neg a$. Т.к. $a \notin M$, то $\neg a \in M$ по определению дизъюнктивности $M$. Но тогда из $M \vdash a$ и $M \vdash \neg a$ мы можем доказать, что $M \vdash a \land \neg a$.
 \end{proof}
 \item Возьмем множество всех дизъюнктивных множеств с формулами из ИИВ. Мы можем это сделать, т.к. ИИВ дизъюнктивно. Для любого элемента $W_{i} \vdash a, a \in W_{i}$, значит в этом мире $a$ вынуждено. Построим дерево с порядком <<быть подмножеством>>. Докажем, что это множество - модель Крипке. Проверим 5 свойств:
 \begin{enumerate}
 \item $W, x \Vdash P \Leftrightarrow v(x, P) = 1$ если $P \in V$ ($V$ - множество вынужденных переменных). Монотонность выполняется по определению дерева
-\item $W, x \Vdash (A \& B) \Leftrightarrow W, x \Vdash A$ и $W, x \Vdash B$\\
-С помощью аксиомы $A \& B \rightarrow A$ доказываем $W \vdash A$, значит $A \in W$. Аналогично с $B$ 
+\item $W, x \Vdash (A \land B) \Leftrightarrow W, x \Vdash A$ и $W, x \Vdash B$\\
+С помощью аксиомы $A \land B \rightarrow A$ доказываем $W \vdash A$, значит $A \in W$. Аналогично с $B$ 
 \item $W, x \Vdash (A \vee B) \Leftrightarrow W, x \Vdash A$ или $W, x \Vdash B$\\
 Очевидно по определению дизъюнктивности
 \item $W, x \Vdash (A \rightarrow B) \Leftrightarrow \forall y \geq x (W, y \Vdash A \Rightarrow W, y \Vdash B)$\\
 Мы знаем, что $W \vdash A \rightarrow B$. Пусть в $W$ есть $A$, тогда по M.P. докажем, что $B$. Пусть в $W$ есть $B$, тогда мы уже получили $B$.
 \item $W, x \Vdash \neg A \Leftrightarrow \forall y \geq x (W, x \nVdash A)$
 
-Если где-то оказалось $A$, то оно доказуемо, а значит мы сможем доказать и $A \& \neg A$ 
+Если где-то оказалось $A$, то оно доказуемо, а значит мы сможем доказать и $A \land \neg A$ 
 \end{enumerate}
 \item $\Vdash A$, тогда $W_{i} \Vdash A$. Рассмотрим $W_{0} = \lbrace$все тавтологии ИИВ$\rbrace$. $W_{0} \Vdash A$, т.е. $\vdash A$.
 \end{enumerate}

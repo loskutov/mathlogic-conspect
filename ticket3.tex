@@ -51,7 +51,7 @@ $\alpha \rightarrow \alpha \vee \neg \alpha \rightarrow \neg \alpha \rightarrow 
 \label{sec-5-2}
 Вводим в наше множество \emph{истинностных значений} дополнительный элемент \texttt{Н} (сокращение от слова <<Неизвестно>>). Отождествим \texttt{Н} с $\frac{1}{2}$, так что $\texttt{Л} < \texttt{Н} < \texttt{И}$. Определим операции на этом множестве \emph{истинностных значений}:
 \begin{itemize}
-\item конъюнкция: минимум из двух значений (например $\texttt{И} \& \texttt{Н} = \texttt{Н}$).
+\item конъюнкция: минимум из двух значений (например $\texttt{И} \land \texttt{Н} = \texttt{Н}$).
 \item дизъюнкция: максимум из двух значений (например $\texttt{И} \vee \texttt{Н} = \texttt{И}$).
 \item импликация: $\texttt{И} \rightarrow \alpha = \alpha$, $\texttt{Л} \rightarrow \alpha = \texttt{И}$, $\texttt{Н} \rightarrow \texttt{Л} = \texttt{Л}$, $\texttt{Н} \rightarrow \texttt{Н} = \texttt{И}$, $\texttt{Н} \rightarrow \texttt{И} = \texttt{И}$.
 \item отрицание: $\neg \texttt{Н} = \texttt{Л}$, а для остальных элементов все так же.
@@ -130,9 +130,9 @@ $\alpha + \neg \alpha = 1$
 $\alpha \leq \beta \Leftrightarrow  \alpha \vdash \beta$\\
 $\alpha \sim \beta \Leftrightarrow \alpha \vdash \beta$ и $\beta \vdash \alpha$\\
 Определим операции и $0$, $1$:\\
-$0$ -- $\alpha \& \neg \alpha = \perp$\\
+$0$ -- $\alpha \land \neg \alpha = \perp$\\
 $1$ -- $\alpha \rightarrow \alpha = T$\\
-$\alpha \& \beta = \alpha * \beta$\\
+$\alpha \land \beta = \alpha * \beta$\\
 $\alpha \vee \beta = \alpha + \beta$\\
 $\neg \alpha = -\alpha$\\
 Получившаяся алгебра называется \emph{алгеброй Линденбаума-Тарского} и является алгеброй Гейтинга, т.к. для нее выполняется аксиома $\alpha * \neg \alpha = 0$ (по определению).
@@ -140,11 +140,11 @@ $\neg \alpha = -\alpha$\\
 $\forall \beta \in V \perp \vdash \beta$ (Из лжи следует все)
 \end{lemma}
 \begin{proof}
-$\alpha \& \neg \alpha \vdash \beta$\\
+$\alpha \land \neg \alpha \vdash \beta$\\
 \begin{tabular}{lll}
-(1) &$\alpha \& \neg \alpha$& Допущение\\
-(2) &$\alpha \& \neg \alpha \rightarrow \alpha$& Сх. акс. 4\\
-(3) &$\alpha \& \neg \alpha \rightarrow \neg \alpha$& Сх. акс. 5\\
+(1) &$\alpha \land \neg \alpha$& Допущение\\
+(2) &$\alpha \land \neg \alpha \rightarrow \alpha$& Сх. акс. 4\\
+(3) &$\alpha \land \neg \alpha \rightarrow \neg \alpha$& Сх. акс. 5\\
 (4) &$\alpha$& M.P. 1,2\\
 (5) &$\neg \alpha$& M.P. 1,3\\
 (6) &$\alpha \rightarrow \neg \alpha \rightarrow \beta$& Сх. акс. 10\\

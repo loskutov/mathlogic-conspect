@@ -1,0 +1,118 @@
+\section{Ticket 13: ТМ}
+\label{sec-15}
+\subsection{Теория множеств}
+\label{sec-15-1}
+   Значит это такая теория первого порядка.
+   В сигнатуре модели есть один пред.символ - \in
+   Добавляем связку a \leftrightarrow b = (a \to b) \& (b \to a)
+   σ \in Θ => \forall x(x \in σ \to x \in Θ)
+o   σ = Θ => σ \in Θ \& Θ \in σ
+   ∅ : \forall x(\lnot x \in ∅)
+   x ∩ y = z, тогда \forall t(t \in z \leftrightarrow t \in x \& t \in y)
+   Dj(x) \forall a\forall b(a \in x \& b \in x \& a \ne  b \to a ∩ b = ∅)
+   X(a) - мн-во всех x пересекающихся ровно в одном эл-те с каждым из а
+   и содержащих элементы из ∪a.
+   X(\{\{1, 2\}, \{2', 3\}\}) = \{\{2, 3\}, \{1, 2'\}\}
+\subsubsection{Если существует мн-во, то существует пустое мн-во}
+\label{sec-15-1-1}
+Аксиома выделения:
+\forall x\exists b\forall y(y \in b \leftrightarrow (y \in x \& \phi(y)))
+Возьмем наше существующее мн-во x
+\exists b\forall y(y \in b \leftrightarrow (y \in x \& \phi(y)))
+Пусть \phi(y) = \bot
+тогда подставим ∅ вместо b:
+\forall y(y \in ∅ \leftrightarrow (y \in x \& \bot))
+Это выполняется вроде.
+\subsubsection{Если x, то найдется \{x\}}
+\label{sec-15-1-2}
+\forall x\exists \{x\}\forall y(y \in \{x\} \to y = x)
+\begin{enumerate}
+\item Пусть x \ne  ∅
+\{x\} = \{y | y \in \{x, y\} \& y \ne  ∅\}
+по аксиоме объединения \exists p\forall y(y \in p \leftrightarrow \exists s(y \in s \& s \in x))
+\forall y(y \in \{x, ∅\} \leftrightarrow \exists s(y \in s \& s \in x))
+
+или по аксиоме пары
+\exists p(x \in p \& ∅ \in p \& \forall z(z \in p \to (x = z \lor y = z)))
+x \in \{x, ∅\} \& ∅ \in \{x, ∅\} \& \forall z(z \in \{x, ∅\} \to \dots \}
+
+ДГ руками помахал тут, ну и я помахаю по причине
+отсутствия времени доказывать
+
+А, нет, вот, кажется:
+По аксиоме степени \forall x\exists \{x, ∅\}\forall y(y \in \{x, ∅\} \leftrightarrow y \in x)
+\forall x\exists \{x, ∅\}\forall y((y \in \{x, ∅\} \to y \in x)\&(y \in x \to y \in \{x, ∅\}))
+\lnot y \in ∅, значит (y \in x \to y \in x) = \top
+\forall x\exists \{x, ∅\}\forall y((y \in \{x, ∅\} \to y \in x)\&\top)
+\forall x\exists \{x, ∅\}\forall y(y \in \{x, ∅\} \to y = x)   более слабое условие
+\item x = ∅
+P(∅) = \{∅\}
+\end{enumerate}
+\subsubsection{\exists !x(\forall y.\lnot (y \in x))}
+\label{sec-15-1-3}
+\exists x(\forall y.\lnot (y \in x)) \& \forall a\forall b((\forall y.\lnot (y \in a)) \& (\forall y.\lnot (y \in b)) \to a = b)
+Первое по определению пустого множества и аксиоме выделения с \bot
+\forall y.(\lnot y \in \{\}) \& \forall y.(\lnot y \in \{\}) \to \forall p((p\in x \to p\in y) \& (p\in y \to p\in x))
+Второе как-то через ∅_1 \in ∅₂ и обратное включение
+На основании того, что мы подставляем наши пустые множества, импликация
+вырождается в \top \to \top
+\subsubsection{x ∩ y существует}
+\label{sec-15-1-4}
+по теореме выделения
+\forall x\exists b\forall y(y \in b \leftrightarrow (y \in x \& \phi(y)))
+\forall y(y \in x ∩ y \leftrightarrow (y \in x \& t \in y))
+\subsection{Аксиоматика ZFC}
+\label{sec-15-2}
+\subsubsection{Аксиома равенства}
+\label{sec-15-2-1}
+\forall x\forall y\forall z((x = y \& y \in z) \to x \in z)
+Eсли два множества равны, то любой элемент лежащий в первом,
+лежит и во втором
+\subsubsection{Аксиома пары}
+\label{sec-15-2-2}
+\forall x\forall y(\lnot (x=y) \to \exists p(x \in p \& y \in p \& \forall z(z \in p \to (x = z \lor y = z))))
+x \ne  y, тогда сущ. \{x, y\}
+\subsubsection{Аксиома объединений}
+\label{sec-15-2-3}
+\forall x(\exists y(y\in x) \to \exists p\forall y(y \in p \leftrightarrow \exists s(y \in s \& s \in x)))
+Eсли x не пусто, то из любого семейства множеств можно
+образовать „кучу-малу“, то есть такое множество p,
+каждый элемент y которого принадлежит по меньшей мере
+одному множеству s данного семейства s x
+\subsubsection{Аксиома степени}
+\label{sec-15-2-4}
+\forall x\exists p\forall y(y \in p \leftrightarrow y \in x)
+P(x) - множество степени x (не путать с 2ˣ - булеаном)
+Это типа мы взяли наш x, и из его элементов объединением и
+пересечением например понаобразовывали кучу множеств, а потом
+положили их в p.
+\subsubsection{Схема аксиом выделения}
+\label{sec-15-2-5}
+\forall x\exists b\forall y(y \in b \leftrightarrow (y \in x \& \phi(y)))
+Для нашего множества x мы можем подобрать множество побольше,
+на котором для всех элементов, являющихся подмножеством x
+выполняется предикат.
+\subsubsection{Аксиома выбора (не входит в ZF по дефолту)}
+\label{sec-15-2-6}
+Если a = Dj(x) и a \ne  0, то x \in a \ne  0
+\subsubsection{Аксиома бесконечности}
+\label{sec-15-2-7}
+\exists N(∅ \in N \& \forall x(x \in N \to x ∪ \{x\} \in N))
+\subsubsection{Аксиома фундирования}
+\label{sec-15-2-8}
+\forall x(x = ∅ \lor \exists y(y \in x \& y ∩ x = ∅))
+\forall x(x \ne  ∅ \to \exists y(y \in x \& y ∩ x = ∅))
+Равноценные формулы.
+
+Я бы сказал, что это звучит как-то типа
+"не существует бесконечно вложенных множеств"
+\subsubsection{Схема аксиом подстановки}
+\label{sec-15-2-9}
+\forall x\exists !y.\phi(x,y) \to \forall a\exists b\forall c(c \in b \leftrightarrow (\exists d.(d \in a \& \phi(d, c))))
+Пусть формула \phi такова, что для при любом x найдется единственный y
+такой, чтобы она была истинна на x, y, тогда для любого a
+найдется множество b, каждому элементу которого c можно сопоставить
+подмножество a и наша функция будет верна на нем и на c
+Типа для хороших функций мы можем найти множество с отображением из
+его элементов в подмножество нашего по предикату.
+

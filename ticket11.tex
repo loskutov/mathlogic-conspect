@@ -1,0 +1,104 @@
+\section{Ticket 11: 1т о неполноте}
+\label{sec-13}
+\subsection{Непротиворечивость, ω-непротиворечивость}
+\label{sec-13-1}
+\begin{itemize}
+\item Теория непротиворечива, если в ней нельзя вывести
+одновременно a и \lnot a (что аналогично невозможности
+вывести a\&\lnot a).
+\item Теория ω-непротиворечива, если из %\forall \phi(x) \vdash \phi(x\textasciitilde{})$ следует
+⊬ \exists p\lnot \phi(p). Проще говоря, если мы взяли
+формулу, то невозможно вывести одновременно \exists x\lnot A(x)
+и A(0), A(1), \dots
+\item Лемма о w-\# и обычной непротиворечивости
+Если теория w-непротиворечива, то она непротиворечива
+\phi = x=x \to x=x
+Такая формула очевидно доказуема (A \to A)
+$\vdash \phi[x:=k] k \in N₀$
+Но недоказуемо \exists x\lnot (x=x\to x=x)
+А в противоречивой теории доказуемо все
+\end{itemize}
+\subsection{Прервая теорема о неполноте}
+\label{sec-13-2}
+Определим отношение W_1(x, p), истинное тогда и только тогда,
+когда x - геделев номер формулы \phi с единственным свободным
+аргументом x, а p - геделев номер доказательства \phi("\phi"). Это
+отношение выразимо в ФA, потому что мы просто пихаем это в наш
+Proof, а его мы выразили через рекурсивные функции, а они
+представимы.
+Пусть его выражает w_1(x, p);
+Рассмотрим формулу σ = \forall p\lnot w_1(x, p) - для любого доказательства
+оно не является доказательством самоприменения \phi, то есть
+самоприменение \phi недоказуемо.
+То есть если σ(`a\textasciitilde{}) истинно, то a(`a\textasciitilde{}) недоказуемо.
+В нашем случае если σ(`a\textasciitilde{}) истинно, то σ(`σ\textasciitilde{}) недоказуемо.
+\begin{enumerate}
+\item Если формальная арифметика непротиворечива, то недоказуемо σ(`σ\textasciitilde{})
+\begin{enumerate}
+\item Пусть $\vdash σ(`σ\textasciitilde{})$, тогда найдется геделев номер ее док-ва p,
+тогда W_1(`σ, p), то есть $\vdash w_1(`σ\textasciitilde{}, p\textasciitilde{})$.
+\item С другой стороны,
+$\vdash σ(`σ\textasciitilde{})$
+$\vdash \forall p\lnot w_1('σ\textasciitilde{}, p)$
+\forall p\lnot w_1(`σ\textasciitilde{}, p) \to \lnot w_1(`σ\textasciitilde{}, p\textasciitilde{})
+\lnot w_1(`σ\textasciitilde{}, p\textasciitilde{})
+Тогда ФА противоречива.
+\end{enumerate}
+\item Если формальная арифметика w-непротиворечива, то недоказуемо \lnot σ(`σ\textasciitilde{})
+Пусть $\vdash \lnot σ(`σ\textasciitilde{})$, то есть $\vdash \lnot \forall p\lnot w_1(`σ\textasciitilde{}, p)$, что значит \exists p.w_1(`σ\textasciitilde{}, p)
+Найдется такой q, что $\vdash w_1(`σ\textasciitilde{}, q\textasciitilde{})$, потому что если бы не нашелся,
+это бы значило доказуемость для каждого q \lnot w_1(`σ\textasciitilde{}, q\textasciitilde{}), тогда по
+ω-непротиворечивости было бы не доказуемо \exists p\lnot \lnot w_1(`σ\textasciitilde{}, p)
+То q, что мы нашли - это номер доказательства  σ(`σ\textasciitilde{}), что и
+утверждает выражение $\vdash w_1(`σ\textasciitilde{}, q\textasciitilde{})$. Но мы предполагали, что $\vdash \lnot σ(`σ\textasciitilde{})$.
+Противоречие.
+\end{enumerate}
+
+Нормальное доказательство общезначимости:
+Я не знаю, зачем нам второй пункт, но из первого следует, что если
+наша теория w-непротиворечива, то она непротиворечива (по лемме выше),
+значит в ней недоказуемо σ(`σ\textasciitilde{}), то есть \forall p\lnot w_1(`σ\textasciitilde{}, p), то есть
+по корректности последнее выражение И, но это и есть в точности определение
+σ(`σ\textasciitilde{}).
+
+Ненормальное д-во общезначимости:
+Итого мы доказали, что если формальная арифметика ω-непротиворечива,
+то в ней не доказуемо ни σ(`σ\textasciitilde{}) ни \lnot σ(`σ\textasciitilde{}). Одно из них точно тавтология
+(в формуле нет свободных переменных). Тогда ФА неполна при условии
+ω-непротиворечивости.
+
+Другое доказательство общезначимости:
+\lnot σ(`σ\textasciitilde{}) недоказуема
+[σ(`σ\textasciitilde{})] = [\forall p\lnot w_1(`σ\textasciitilde{}, p)] =
+\begin{enumerate}
+\item И если [\lnot w_1(`σ\textasciitilde{}, a)] = И для какого-то а
+\item Л иначе
+\end{enumerate}
+
+Это значит, что
+И если [w_1(`σ\textasciitilde{}, a)] = Л
+[w_1(`σ\textasciitilde{}, a)] = Л, докажем от противного
+Пусть [σ(`σ\textasciitilde{})] = Л,
+[\forall p\lnot w_1(`σ\textasciitilde{}, p)] = Л
+[\lnot \forall p\lnot w_1(`σ\textasciitilde{}, p)] = И
+[\exists p.w_1(`σ\textasciitilde{}, p)] = И
+[w_1(`σ\textasciitilde{}, a)] = И для какого-то а
+то есть a доказывает σ(`σ\textasciitilde{})
+???
+
+тогда по определению w_1 существует
+доказательство σ(`σ\textasciitilde{}),
+\subsection{Пример w-противоречивой, но непротиворечивой теории (при усл. непрот. ФА)}
+\label{sec-13-3}
+Добавим в ФА аксиому Г: \lnot σ(`σ\textasciitilde{})
+Тогда по контрпозиции 1п2 она w-противоречива.
+Если бы мы могли доказать противоречивость нашей системы, то
+ФА была бы противоречива, тогда хз
+$\lnot σ(`σ\textasciitilde{}) \vdash σ(`σ\textasciitilde{})\&\lnot σ(`σ\textasciitilde{})$
+$\vdash σ(`σ\textasciitilde{})$
+Но мы предположили что \lnot σ(`σ\textasciitilde{})
+\subsection{Форма Россера}
+\label{sec-13-4}
+Если формальная арифметика непротиворечива, то в ней найдется
+такая формула \phi, что ⊬\phi и ⊬\lnot \phi
+

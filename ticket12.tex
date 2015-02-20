@@ -1,0 +1,138 @@
+\section{Ticket 12: 2т о неполноте}
+\label{sec-14}
+\subsection{Consis, Условия выводимости Гильберта-Бернайса}
+\label{sec-14-1}
+Определим Consis как утверждение, показывающее
+непротиворечивость ФА - отсутствие $\phi : \vdash \phi, \lnot \phi$. Поскольку
+в противоречивой теории выводится что угодно, возьмем что-то
+недоказуемое, типа 1=0.
+Consis = \forall p(\lnot Proof('(1=0)\textasciitilde{}, p))
+
+Определим отношение Sub(a, b, c) истинно, если
+a, b - `a, `b \& c = `a[x:=b] или
+a \lor b не геделев номер и c = 0
+
+Пусть Sub(a, b, c) выражает τ(a, b, c)
+
+\begin{itemize}
+\item Лемма о самоприменении
+a(x) - формула, тогда \exists b такой что
+\begin{enumerate}
+\item $\vdash a(`b\textasciitilde{}) \to b$
+\item $\vdash \beta \to a(`b\textasciitilde{})$
+\end{enumerate}
+b₀(x) = \forall t(τ(x, x, t) \to a(t))
+b = b₀(`b₀\textasciitilde{})
+\begin{enumerate}
+\item $a(`b\textasciitilde{}) \vdash a(`b\textasciitilde{})$
+$a(`b\textasciitilde{}) \vdash τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, `b\textasciitilde{}) \to a(`b\textasciitilde{})$    акс 1 + MP
+$a(`b\textasciitilde{}) \vdash \top \to (τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, `b\textasciitilde{}) \to a(`b\textasciitilde{}))$
+$a(`b\textasciitilde{}) \vdash \top \to \forall t(τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, t) \to a(t))$
+$a(`b\textasciitilde{}) \vdash \forall t(τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, t) \to a(t))$
+$a(`b\textasciitilde{}) \vdash b$
+\item $b \vdash \forall t(τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, t) \to a(t))$    тут почти $a \vdash a$ написано
+$b \vdash τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, `b\textasciitilde{})$             по выразимости
+$b \vdash τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, `b\textasciitilde{}) \to a(`b\textasciitilde{})$    сняли квантор с 1
+$b \to a(`b\textasciitilde{})$
+\end{enumerate}
+
+\item Условия Гильберта-Бернайса
+\end{itemize}
+Пусть πg(x, p) выражает Proof(x, p)
+πr(x) = \exists t πg(x, t) тогда если
+\begin{enumerate}
+\item $\vdash a$ , то $\vdash πr(`a\textasciitilde{})$
+\item $\vdash πr(`a\textasciitilde{}) \to πr(`πr(`a\textasciitilde{})\textasciitilde{})$
+\item $\vdash πr(`a\textasciitilde{}) \to πr(`(a \to b)\textasciitilde{}) \to πr(`b\textasciitilde{})$
+\end{enumerate}
+\subsection{Вторая теорема о неполноте}
+\label{sec-14-2}
+\subsubsection{Рукомашеское доказательство без условий Г-Б}
+\label{sec-14-2-1}
+\begin{itemize}
+\item Если арифметика непротиворечива, в ней нет д-ва Consis
+рассмотрим Consis \to σ(`σ\textasciitilde{}).
+Тогда если Consis доказуемо, то σ(`σ\textasciitilde{}) недоказуемо.
+То есть это формулировка 1.1 Гёделя о неполноте.
+Тогда если у нас будет Consis, мы сможем доказать
+σ(`σ), тогда 1.1 фейлится. Значит Consis недоказуемо.
+
+\item Доказательство того, что Consis недостаточно формален
+Заменим Consis в д-ве на
+Proof1(a, x) = Proof(a, x)\&\lnot Proof(`(1=0),x)
+Consis1 = \forall x\lnot Proof1(`(1=0),x)
+Если арифметика непротиворечива, то Proof1(a, x) = Proof(a, x)
+Если арифметика противоречива, то Consis1 доказуема как и все
+остальное.
+Ну давайте менять.
+
+Поменяли. Смотрим. хехехе, давайте докажем Consis1:
+\lnot (π(x) \& \lnot π(x))              доказуемо в ИВ
+\top
+\top \to \lnot (π(x) \& \lnot π(x))          1 акс, MP
+\lnot (π(x) \& \lnot π(x))
+\forall x(\lnot (π(x) \& \lnot π(x)))
+
+Тогда выходит, что мы можем доказать противоречивость арифметики.
+Но это не так, бага вот в чем:
+Замена consis на consis1 неоправдана - в consis1 есть
+формула 1=0, на которой ее результат не вычисляется, а
+постулируется.
+Чтобы выражать Consis абстрактно, существуют условия выводимости
+Гильберта-Бернайса.
+
+Докажем, что consis1 не удовлетворяет 3 свойству Г-Б
+Пусть Proof1(x,p) выражает π1.
+$\vdash π1(`a\textasciitilde{}) \to π1(`a\to b\textasciitilde{}) \to π1(`b\textasciitilde{})$ оценим при a=(2=0), b=(1=0)
+?       \to (   true  \to  false)
+?       \to false
+Если эта формула верна, то $\vdash π1(`a\textasciitilde{}$)
+Тогда если π1(`a\textasciitilde{}), то Proof(2=0, x)\&\lnot Proof(`1=0, x) = И
+Это значит что теория противоречива, потому что в ней выводимо 2=0,
+но она непротиворечива, потому что недоказуемо 1=0. \to ←
+\end{itemize}
+\subsubsection{Доказательство 2 теоремы Гёделя о неполноте}
+\label{sec-14-2-2}
+Пусть π удовлетворяет условиям Г-Б
+Consis = \lnot π(1=0)
+ФА непротиворечива
+Тогда ⊬ Consis
+
+\begin{enumerate}
+\item По лемме о самоприменении
+\begin{enumerate}
+\item \lnot π(γ) \to γ
+\item γ \to \lnot π(γ)
+\item \lnot γ \to π(γ)                            контрпозиция
+\item π(γ) \to \lnot γ
+\end{enumerate}
+\item π(γ) \to π(\lnot γ)
+\begin{enumerate}
+\item $π(γ) \vdash π(`π(γ)\textasciitilde{})$                     ГБ2
+\item $\vdash π(π(γ) \to \lnot γ)$                       ГБ1 от 1.4
+\item $\vdash π(π(γ)) \to π(π(γ) \to \lnot γ) \to π(\lnot (γ))$   ГБ3
+\item $π(γ) \vdash π(\lnot γ)$                         2MP (2.1, 2.2)
+\end{enumerate}
+\item $\vdash π(α \to \beta \to γ) and \vdash π(α) \to π(\beta) => \vdash π(α) \to π(γ)$
+\begin{enumerate}
+\item π(α \to \beta \to γ) \to π(α) \to π(b \to γ)        ГБ3
+\item π(\beta \to γ) \to π(\beta) \to π(γ)                ГБ3
+\item π(α) \to π(\beta \to γ)                       MP 1, given
+\item π(α) \to π(\beta)                           given
+\item π(α) \to π(γ)                           занести под дедукцию, ГБ3
+\end{enumerate}
+\item $\vdash π(γ) \to π(1=0)$
+\begin{enumerate}
+\item γ \to \lnot γ \to (1=0)                        10i в ИИВ, выводима в предикатах
+\item $\vdash π(γ \to \lnot γ \to (1=0))$                   ГБ1
+\item π(γ) \to π(\lnot γ)                          2
+\item $\vdash π(γ) \to π(1=0)$                       MP 4.2 4.3
+\end{enumerate}
+\item ⊬ Consis
+$\vdash \lnot π(1=0) \to \lnot π(γ)$                        контрапозиция 4
+$\vdash Consis \to \lnot π(γ)$                         the same
+$] \vdash Consis$, тогда $\vdash \lnot π(γ)$
+$\vdash \lnot π(γ) \to γ => \vdash γ => \vdash π(γ)$            1.1, ГБ1
+$\vdash \lnot π(γ), \vdash π(γ)  \to ←$
+\end{enumerate}
+

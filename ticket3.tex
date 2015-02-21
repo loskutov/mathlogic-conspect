@@ -15,7 +15,7 @@
 Выкидываем 10 аксиому, добавляем $\alpha \rightarrow \neg \alpha \rightarrow \beta$.
 
 Она доказывается и в ИВ.
-\begin{lemma} 
+\begin{lemma}\label{provability}
 $\alpha, \alpha \vee \neg \alpha, \neg \alpha \vdash \beta$
 \end{lemma}
 \begin{tabular}{lll}
@@ -49,7 +49,7 @@ $\alpha \rightarrow \alpha \vee \neg \alpha \rightarrow \neg \alpha \rightarrow 
 
 \subsection{Опровергаемость исключенного третьего}
 \label{sec-5-2}
-Вводим в наше множество \emph{истинностных значений} дополнительный элемент \texttt{Н} (сокращение от слова <<Неизвестно>>). Отождествим \texttt{Н} с $\frac{1}{2}$, так что $\texttt{Л} < \texttt{Н} < \texttt{И}$. Определим операции на этом множестве \emph{истинностных значений}:
+Вводим в наше множество \emph{истинностных значений} дополнительный элемент \texttt{Н} (сокращение от слова <<Неизвестно>>). Отождествим \texttt{Н} с $\nicefrac{1}{2}$, так что $\texttt{Л} < \texttt{Н} < \texttt{И}$. Определим операции на этом множестве \emph{истинностных значений}:
 \begin{itemize}
 \item конъюнкция: минимум из двух значений (например $\texttt{И} \land \texttt{Н} = \texttt{Н}$).
 \item дизъюнкция: максимум из двух значений (например $\texttt{И} \vee \texttt{Н} = \texttt{И}$).

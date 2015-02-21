@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{epigraph}
 \usepackage{mathtools}
+\usepackage{nicefrac} % ½ и его друзья
 \usepackage{amssymb}
 \usepackage{proof} % M. P. и его друзья
 \usepackage[linkbordercolor={0 0 1}, pdftitle={Курс матлогики по Штукенбергу Д. Г.}]{hyperref}
@@ -18,7 +19,8 @@
 \usepackage[left=2cm,right=1.6cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
 \usepackage{microtype} % модная микротипографика, нифига не работающая с XeLaTeX (ну, почти)
 \usepackage{fontspec}
-\setmainfont[Ligatures=TeX]{Palatino Linotype}
+\setmainfont[Ligatures=TeX,SmallCapsFont={Times New Roman}]{Palatino Linotype}
+%\setmainfont[Ligatures=TeX]{Times New Roman}
 \setmonofont{DejaVu Sans Mono}
 \usepackage{polyglossia}
 \setdefaultlanguage[babelshorthands=true]{russian}
@@ -32,6 +34,9 @@
 \renewcommand{\geq}{\geqslant} % ⩾
 \renewcommand{\phi}{\varphi}
 \renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\true}{\texttt{И}}
+\newcommand{\false}{\texttt{Л}}
 
 % Declaring some new operators
 \DeclareMathOperator{\plog}{plog}
@@ -132,7 +137,7 @@ Mykhail Volkhov, 2538, 2014Sep-2015Jan\\
 \include{ticket8}
 \include{ticket9}
 \include{ticket10}
-%\include{ticket11}
+\include{ticket11}
 %\include{ticket12}
 %\include{ticket13}
 %\include{ticket14}

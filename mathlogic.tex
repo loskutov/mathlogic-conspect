@@ -54,7 +54,7 @@
 \end{picture}}
 \newcommand{\template}[1]{\ltemplate #1\rtemplate}
 
-\newcommand{\starsection}[1]{\addtocounter{section}{1}%
+\newcommand{\starsection}[1]{\addtocounter{section}{1}\setcounter{subsection}{0}%
     \addcontentsline{toc}{section}{\hspace{-2em}\texorpdfstring{$\star\quad$\thesection\hspace{1em}}{}#1}%
 {\vspace{1.5em}\par\noindent\bfseries\Large \thesection$^\star$\hspace{0.5em} #1}\par\vspace{1em}\noindent}
 

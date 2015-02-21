@@ -26,50 +26,6 @@
 %\hyphenpenalty=5000
 
 
-
-\newcommand{\starsection}[1]{\addtocounter{section}{1}%
-    \addcontentsline{toc}{section}{\hspace{-2em}\texorpdfstring{$\star\quad$\thesection\hspace{1em}}{}#1}%
-{\vspace{1.5em}\par\noindent\bfseries\Large \thesection$^\star$\hspace{0.5em} #1}\par\vspace{1em}\noindent}
-
-
-
-
-
-\newdimen\hruleheight
-\hruleheight=.1pt
-
-\def\outerline#1{\hbox to\textwidth{\hbox to0pt{\hss\hbox to 7.5pc{#1\hss}}%
-\hfill}}
-
-\def\sectionstar#1{\refstepcounter{section}%
-    \markright{\thesection\hskip1em #1}%
-    \vskip26pt
-    \addcontentsline{toc}{section}{\protect\numberline{%
-    \hbox to0pt{\hss\hbox to 2pc{A\hfill}}\thesection}#1}%
-    \outerline{%
-        \vbox{\hsize35.5pc
-            \hrule height\hruleheight%.1pt
-            \vskip 8pt
-            \noindent
-    \bigstar\hskip1em{\pselevenbf\thesection\hskip1em #1}}}
-\vskip16pt\@afterheading}
-
-
-
-% some magic for Godel numerals
-\newbox\gnBoxA
-\newdimen\gnCornerHgt
-\setbox\gnBoxA=\hbox{$\ulcorner$}
-\global\gnCornerHgt=\ht\gnBoxA
-\newdimen\gnArgHgt
-\def\Godel #1{%
-\setbox\gnBoxA=\hbox{$#1$}%
-\gnArgHgt=\ht\gnBoxA%
-\ifnum     \gnArgHgt<\gnCornerHgt \gnArgHgt=0pt%
-\else \advance \gnArgHgt by -\gnCornerHgt%
-\fi \raise\gnArgHgt\hbox{$\ulcorner$} \box\gnBoxA %
-\raise\gnArgHgt\hbox{$\urcorner$}}
-
 \renewcommand{\le}{\leqslant} % ⩽
 \renewcommand{\leq}{\leqslant} % ⩽
 \renewcommand{\ge}{\geqslant} % ⩾
@@ -97,6 +53,24 @@
 \put(4.8,3.9){\line(-1,1){5.2}} % just to make it more bold lol
 \end{picture}}
 \newcommand{\template}[1]{\ltemplate #1\rtemplate}
+
+\newcommand{\starsection}[1]{\addtocounter{section}{1}%
+    \addcontentsline{toc}{section}{\hspace{-2em}\texorpdfstring{$\star\quad$\thesection\hspace{1em}}{}#1}%
+{\vspace{1.5em}\par\noindent\bfseries\Large \thesection$^\star$\hspace{0.5em} #1}\par\vspace{1em}\noindent}
+
+% some magic for Godel numerals
+\newbox\gnBoxA
+\newdimen\gnCornerHgt
+\setbox\gnBoxA=\hbox{$\ulcorner$}
+\global\gnCornerHgt=\ht\gnBoxA
+\newdimen\gnArgHgt
+\def\Godel #1{%
+\setbox\gnBoxA=\hbox{$#1$}%
+\gnArgHgt=\ht\gnBoxA%
+\ifnum     \gnArgHgt<\gnCornerHgt \gnArgHgt=0pt%
+\else \advance \gnArgHgt by -\gnCornerHgt%
+\fi \raise\gnArgHgt\hbox{$\ulcorner$} \box\gnBoxA %
+\raise\gnArgHgt\hbox{$\urcorner$}}
 
 \newcommand{\defeq}{\coloneqq}
 \newcommand{\s}[1]{\texttt{#1}}

@@ -1,12 +1,12 @@
 \section{Ticket 12: 2-ая теорема Гёделя о неполноте}
 \label{sec-14}
-\subsection{$Consis$, Условия выводимости Гильберта-Бернайса}
+\subsection{Consis, Условия выводимости Гильберта-Бернайса}
 \label{sec-14-1}
-Определим $Consis$ как утверждение, показывающее непротиворечивость ФА - отсутствие $\phi : \vdash \phi, \lnot \phi$. Поскольку
+Определим $Consis$ как утверждение, показывающее непротиворечивость ФА - отсутствие $\phi$: $\vdash \phi, \lnot \phi$. Поскольку
 в противоречивой теории выводится что угодно, возьмем что-то недоказуемое, например $1 = 0$.\\
 $Consis = \forall p(\lnot Proof(\overline{\Godel{1 = 0}}, p))$
 
-Определим отношение $Sub(a, b, c)$ истинным, если $a$, $b - \Godel{a}$, $\Godel{b} \land c = \Godle{a[x := b]}$ или же $a \lor b$ не геделев номер и $c = 0$
+Определим отношение $Sub(a, b, c)$ истинным, если $a$, $b - \Godel{a}$, $\Godel{b} \land c = \Godel{a[x := b]}$ или же $a \lor b$ не геделев номер и $c = 0$
 
 Пусть $Sub(a, b, c)$ выражает $\tau(a, b, c)$
 \begin{lemma}
@@ -19,7 +19,7 @@ $a(x)$ - формула, тогда $\exists b$ такой что
 \end{lemma}
 \begin{proof}
 $b_0(x) = \forall t(\tau(x, x, t) \to a(t))$\\
-$b = b_0(\overline{\Godel{b_0}})$\\
+$b = b_0(\overline{\Godel{b_0}})$
 \begin{enumerate}
 \item $a(\overline{\Godel{b}}) \vdash a(\overline{\Godel{b}})$\\
 $a(\overline{\Godel{b}}) \vdash \tau(\overline{\Godel{b_0}}, \overline{\Godel{b_0}}, \overline{\Godel{b}}) \to a(\overline{\Godel{b}})$    акс 1 + MP\\
@@ -33,104 +33,102 @@ $b \vdash \tau(\overline{\Godel{b_0}}, \overline{\Godel{b_0}}, \overline{\Godel{
 $b \to a(\overline{\Godel{b}})$
 \end{enumerate}
 \end{proof}
-
-Условия Гильберта-Бернайса \myworries{Лемма, теорема? хз чёт кароч}
-\end{itemize}
-Пусть πg(x, p) выражает Proof(x, p)
-πr(x) = \exists t πg(x, t) тогда если
+\begin{lemma}
+Условия Гильберта-Бернайса \myworries{Лемма, теорема? хз чёт кароч}\\
+Пусть $\pi g(x, p)$ выражает $Proof(x, p)$\\
+$\pi r(x) = \exists t \pi g(x, t)$ тогда если
 \begin{enumerate}
-\item $\vdash a$ , то $\vdash πr(`a\textasciitilde{})$
-\item $\vdash πr(`a\textasciitilde{}) \to πr(`πr(`a\textasciitilde{})\textasciitilde{})$
-\item $\vdash πr(`a\textasciitilde{}) \to πr(`(a \to b)\textasciitilde{}) \to πr(`b\textasciitilde{})$
+\item $\vdash a$, то $\vdash \pi r(\overline{\Godel{a}})$
+\item $\vdash \pi r(\overline{\Godel{a}}) \to \pi r(\overline{\Godel{\pi r(\overline{\Godel{a}})}})$
+\item $\vdash \pi r(\overline{\Godel{a}}) \to \pi r(\overline{\Godel{a \to b}}) \to \pi r(\overline{\Godel{b}})$
 \end{enumerate}
+\end{lemma}
 \subsection{Вторая теорема о неполноте}
 \label{sec-14-2}
-\subsubsection{Рукомашеское доказательство без условий Г-Б}
+\begin{theorem}
+$Consis$ не доказуем
+\end{theorem}
+\subsubsection{Рукомашеское доказательство без условий Гильберта-Бернайса}
 \label{sec-14-2-1}
+\begin{proof}
+Докажем несколько различных фактов
 \begin{itemize}
-\item Если арифметика непротиворечива, в ней нет д-ва Consis
-рассмотрим Consis \to σ(`σ\textasciitilde{}).
-Тогда если Consis доказуемо, то σ(`σ\textasciitilde{}) недоказуемо.
-То есть это формулировка 1.1 Гёделя о неполноте.
-Тогда если у нас будет Consis, мы сможем доказать
-σ(`σ), тогда 1.1 фейлится. Значит Consis недоказуемо.
-
-\item Доказательство того, что Consis недостаточно формален
-Заменим Consis в д-ве на
-Proof1(a, x) = Proof(a, x)\&\lnot Proof(`(1=0),x)
-Consis1 = \forall x\lnot Proof1(`(1=0),x)
-Если арифметика непротиворечива, то Proof1(a, x) = Proof(a, x)
-Если арифметика противоречива, то Consis1 доказуема как и все
-остальное.
+\item Если арифметика непротиворечива, в ней нет доказательства $Consis$:\\
+Рассмотрим $Consis \to \sigma(\overline{\Godel{\sigma}})$. Тогда если $Consis$ доказуемо, то $\sigma(\overline{\Godel{\sigma}})$ недоказуемо. Тоесть это формулировка 1-ой теоремы Гёделя о неполноте.\\
+Тогда если у нас будет $Consis$, мы сможем доказать $\sigma(\overline{\Godel{\sigma}})$, тогда 1-ая теорема Гёделя о неполноте не работает. Значит $Consis$ недоказуемо.
+\item Доказательство того, что $Consi$s недостаточно формален:\\
+Заменим $Consis$ в д-ве на:\\
+$Proof1(a, x) = Proof(a, x) \land \lnot Proof(\Godel{1=0}, x)$\\
+$Consis1 = \forall x \lnot Proof1(\Godel{1=0}, x)$\\
+Если арифметика непротиворечива, то $Proof1(a, x) = Proof(a, x)$\\
+Если арифметика противоречива, то $Consis1$ доказуема как и все остальное.
 Ну давайте менять.
 
-Поменяли. Смотрим. хехехе, давайте докажем Consis1:
-\lnot (π(x) \& \lnot π(x))              доказуемо в ИВ
-\top
-\top \to \lnot (π(x) \& \lnot π(x))          1 акс, MP
-\lnot (π(x) \& \lnot π(x))
-\forall x(\lnot (π(x) \& \lnot π(x)))
+Поменяли. Смотрим. хехехе, давайте докажем $Consis1$:\\
+$\lnot (\pi(x) \& \lnot \pi(x))$ (Доказуемо в ИВ)\\
+$\top$\\
+$\top \to \lnot (\pi(x) \& \lnot \pi(x))$ (1 акс, MP)\\
+$\lnot (\pi(x) \& \lnot \pi(x))$\\
+$\forall x(\lnot (\pi(x) \& \lnot \pi(x)))$
 
-Тогда выходит, что мы можем доказать противоречивость арифметики.
-Но это не так, бага вот в чем:
-Замена consis на consis1 неоправдана - в consis1 есть
-формула 1=0, на которой ее результат не вычисляется, а
-постулируется.
-Чтобы выражать Consis абстрактно, существуют условия выводимости
-Гильберта-Бернайса.
+Тогда выходит, что мы можем доказать противоречивость арифметики. Но это не так, бага вот в чем:
+Замена $Consis$ на $Consis1$ неоправдана -- в $Consis1$ есть формула $1=0$, на которой ее результат не вычисляется, а
+постулируется. Чтобы выражать $Consis$ абстрактно, существуют условия выводимости Гильберта-Бернайса.
 
-Докажем, что consis1 не удовлетворяет 3 свойству Г-Б
-Пусть Proof1(x,p) выражает π1.
-$\vdash π1(`a\textasciitilde{}) \to π1(`a\to b\textasciitilde{}) \to π1(`b\textasciitilde{})$ оценим при a=(2=0), b=(1=0)
-?       \to (   true  \to  false)
-?       \to false
-Если эта формула верна, то $\vdash π1(`a\textasciitilde{}$)
-Тогда если π1(`a\textasciitilde{}), то Proof(2=0, x)\&\lnot Proof(`1=0, x) = И
-Это значит что теория противоречива, потому что в ней выводимо 2=0,
-но она непротиворечива, потому что недоказуемо 1=0. \to ←
+Докажем, что $Consis1$ не удовлетворяет 3-ему свойству Г-Б:\\
+Пусть $Proof1(x,p)$ выражает $\pi 1$.
+$\vdash \pi 1(\overline{\Godel{a}}) \to \pi 1(\overline{\Godel{a \to b}}) \to \pi 1(\overline{\Godel{b}})$ оценим при $a=(2=0)$,$b=(1=0)$\\
+$? \to (true \to false)$\\
+$? \to false$
+
+Если эта формула верна, то $\vdash \pi 1(\overline{\Godel{a}})$
+Тогда если $\pi 1(\overline{\Godel{a}})$, то $Proof(2=0, x) \land \lnot Proof(`1=0, x) = И$\\
+Это значит что теория противоречива, потому что в ней выводимо $2=0$, но она непротиворечива, потому что недоказуемо $1=0$.
 \end{itemize}
+\end{proof}
 \subsubsection{Доказательство 2 теоремы Гёделя о неполноте}
 \label{sec-14-2-2}
-Пусть π удовлетворяет условиям Г-Б
-Consis = \lnot π(1=0)
-ФА непротиворечива
-Тогда ⊬ Consis
+\begin{proof}
+Пусть $\pi$ удовлетворяет условиям Гильебрта-Бернайса:\\
+$Consis = \lnot \pi(1=0)$\\
+ФА непротиворечива\\
+Тогда $\not \vdash Consis$
 
 \begin{enumerate}
 \item По лемме о самоприменении
 \begin{enumerate}
-\item \lnot π(γ) \to γ
-\item γ \to \lnot π(γ)
-\item \lnot γ \to π(γ)                            контрпозиция
-\item π(γ) \to \lnot γ
+\item $\lnot \pi(\gamma) \to \gamma$
+\item $\gamma \to \lnot \pi(\gamma)$
+\item $\lnot \gamma \to \pi(\gamma)$ (контрпозиция)
+\item $\pi(\gamma) \to \lnot \gamma$
 \end{enumerate}
-\item π(γ) \to π(\lnot γ)
+\item $\pi(\gamma) \to \pi(\lnot \gamma)$
 \begin{enumerate}
-\item $π(γ) \vdash π(`π(γ)\textasciitilde{})$                     ГБ2
-\item $\vdash π(π(γ) \to \lnot γ)$                       ГБ1 от 1.4
-\item $\vdash π(π(γ)) \to π(π(γ) \to \lnot γ) \to π(\lnot (γ))$   ГБ3
-\item $π(γ) \vdash π(\lnot γ)$                         2MP (2.1, 2.2)
+\item $\pi(\gamma) \vdash \pi(\overline{\Godel{\pi(\gamma)}})$ (ГБ 2)
+\item $\vdash \pi(\pi(\gamma) \to \lnot \gamma)$ (ГБ 1 от 1.4)
+\item $\vdash \pi(\pi(\gamma)) \to \pi(\pi(\gamma) \to \lnot \gamma) \to \pi(\lnot (\gamma))$ (ГБ 3)
+\item $\pi(\gamma) \vdash \pi(\lnot \gamma)$  (2 MP (2.1, 2.2))
 \end{enumerate}
-\item $\vdash π(α \to \beta \to γ) and \vdash π(α) \to π(\beta) => \vdash π(α) \to π(γ)$
+\item $\vdash \pi(\alpha \to \beta \to \gamma) and \vdash \pi(\alpha) \to \pi(\beta) => \vdash \pi(\alpha) \to \pi(\gamma)$
 \begin{enumerate}
-\item π(α \to \beta \to γ) \to π(α) \to π(b \to γ)        ГБ3
-\item π(\beta \to γ) \to π(\beta) \to π(γ)                ГБ3
-\item π(α) \to π(\beta \to γ)                       MP 1, given
-\item π(α) \to π(\beta)                           given
-\item π(α) \to π(γ)                           занести под дедукцию, ГБ3
+\item $\pi(\alpha \to \beta \to \gamma) \to \pi(\alpha) \to \pi(b \to \gamma)$ (ГБ 3)
+\item $\pi(\beta \to \gamma) \to \pi(\beta) \to \pi(\gamma)$ (ГБ 3)
+\item $\pi(\alpha) \to \pi(\beta \to \gamma)$ (MP 1, given)
+\item $\pi(\alpha) \to \pi(\beta)$ (given)
+\item $\pi(\alpha) \to \pi(\gamma)$ (занести под дедукцию, ГБ 3)
 \end{enumerate}
-\item $\vdash π(γ) \to π(1=0)$
+\item $\vdash \pi(\gamma) \to \pi(1=0)$
 \begin{enumerate}
-\item γ \to \lnot γ \to (1=0)                        10i в ИИВ, выводима в предикатах
-\item $\vdash π(γ \to \lnot γ \to (1=0))$                   ГБ1
-\item π(γ) \to π(\lnot γ)                          2
-\item $\vdash π(γ) \to π(1=0)$                       MP 4.2 4.3
+\item $\gamma \to \lnot \gamma \to (1=0)$ (10i в ИИВ, выводима в предикатах)
+\item $\vdash \pi(\gamma \to \lnot \gamma \to (1=0))$ (ГБ1)
+\item $\pi(\gamma) \to \pi(\lnot \gamma)$ 2
+\item $\vdash \pi(\gamma) \to \pi(1=0)$ (MP 4.2, 4.3)
 \end{enumerate}
-\item ⊬ Consis
-$\vdash \lnot π(1=0) \to \lnot π(γ)$                        контрапозиция 4
-$\vdash Consis \to \lnot π(γ)$                         the same
-$] \vdash Consis$, тогда $\vdash \lnot π(γ)$
-$\vdash \lnot π(γ) \to γ => \vdash γ => \vdash π(γ)$            1.1, ГБ1
-$\vdash \lnot π(γ), \vdash π(γ)  \to ←$
+\item $\not \vdash Consis$
+$\vdash \lnot \pi(1=0) \to \lnot \pi(\gamma)$ (контрапозиция 4)\\
+$\vdash Consis \to \lnot \pi(\gamma)$ (the same)\\
+$] \vdash Consis$, тогда $\vdash \lnot \pi(\gamma)$\\
+$\vdash \lnot \pi(\gamma) \to \gamma \Rightarrow \vdash \gamma \Rightarrow \vdash \pi(\gamma)$ (1.1, ГБ1)\\
+$\vdash \lnot \pi(\gamma), \vdash \pi(\gamma)$
 \end{enumerate}
-
+\end{proof}

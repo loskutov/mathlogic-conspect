@@ -1,42 +1,40 @@
-\section{Ticket 12: 2т о неполноте}
+\section{Ticket 12: 2-ая теорема Гёделя о неполноте}
 \label{sec-14}
-\subsection{Consis, Условия выводимости Гильберта-Бернайса}
+\subsection{$Consis$, Условия выводимости Гильберта-Бернайса}
 \label{sec-14-1}
-Определим Consis как утверждение, показывающее
-непротиворечивость ФА - отсутствие $\phi : \vdash \phi, \lnot \phi$. Поскольку
-в противоречивой теории выводится что угодно, возьмем что-то
-недоказуемое, типа 1=0.
-Consis = \forall p(\lnot Proof('(1=0)\textasciitilde{}, p))
+Определим $Consis$ как утверждение, показывающее непротиворечивость ФА - отсутствие $\phi : \vdash \phi, \lnot \phi$. Поскольку
+в противоречивой теории выводится что угодно, возьмем что-то недоказуемое, например $1 = 0$.\\
+$Consis = \forall p(\lnot Proof(\overline{\Godel{1 = 0}}, p))$
 
-Определим отношение Sub(a, b, c) истинно, если
-a, b - `a, `b \& c = `a[x:=b] или
-a \lor b не геделев номер и c = 0
+Определим отношение $Sub(a, b, c)$ истинным, если $a$, $b - \Godel{a}$, $\Godel{b} \land c = \Godle{a[x := b]}$ или же $a \lor b$ не геделев номер и $c = 0$
 
-Пусть Sub(a, b, c) выражает τ(a, b, c)
-
-\begin{itemize}
-\item Лемма о самоприменении
-a(x) - формула, тогда \exists b такой что
+Пусть $Sub(a, b, c)$ выражает $\tau(a, b, c)$
+\begin{lemma}
+Лемма о самоприменении
+$a(x)$ - формула, тогда $\exists b$ такой что
 \begin{enumerate}
-\item $\vdash a(`b\textasciitilde{}) \to b$
-\item $\vdash \beta \to a(`b\textasciitilde{})$
+\item $\vdash a(\overline{\Godel{b}}) \to b$
+\item $\vdash \beta \to a(\overline{\Godel{b}})$
 \end{enumerate}
-b₀(x) = \forall t(τ(x, x, t) \to a(t))
-b = b₀(`b₀\textasciitilde{})
+\end{lemma}
+\begin{proof}
+$b_0(x) = \forall t(\tau(x, x, t) \to a(t))$\\
+$b = b_0(\overline{\Godel{b_0}})$\\
 \begin{enumerate}
-\item $a(`b\textasciitilde{}) \vdash a(`b\textasciitilde{})$
-$a(`b\textasciitilde{}) \vdash τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, `b\textasciitilde{}) \to a(`b\textasciitilde{})$    акс 1 + MP
-$a(`b\textasciitilde{}) \vdash \top \to (τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, `b\textasciitilde{}) \to a(`b\textasciitilde{}))$
-$a(`b\textasciitilde{}) \vdash \top \to \forall t(τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, t) \to a(t))$
-$a(`b\textasciitilde{}) \vdash \forall t(τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, t) \to a(t))$
-$a(`b\textasciitilde{}) \vdash b$
-\item $b \vdash \forall t(τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, t) \to a(t))$    тут почти $a \vdash a$ написано
-$b \vdash τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, `b\textasciitilde{})$             по выразимости
-$b \vdash τ(`b₀\textasciitilde{}, `b₀\textasciitilde{}, `b\textasciitilde{}) \to a(`b\textasciitilde{})$    сняли квантор с 1
-$b \to a(`b\textasciitilde{})$
+\item $a(\overline{\Godel{b}}) \vdash a(\overline{\Godel{b}})$\\
+$a(\overline{\Godel{b}}) \vdash \tau(\overline{\Godel{b_0}}, \overline{\Godel{b_0}}, \overline{\Godel{b}}) \to a(\overline{\Godel{b}})$    акс 1 + MP\\
+$a(\overline{\Godel{b}}) \vdash \top \to (\tau(\overline{\Godel{b_0}}, \overline{\Godel{b_0}}, \overline{\Godel{b}}) \to a(\overline{\Godel{b}}))$\\
+$a(\overline{\Godel{b}}) \vdash \top \to \forall t(\tau(\overline{\Godel{b}}, \overline{\Godel{b_0}}, t) \to a(t))$\\
+$a(\overline{\Godel{b}}) \vdash \forall t(\tau(\overline{\Godel{b_0}}, \overline{\Godel{b_0}}, t) \to a(t))$\\
+$a(\overline{\Godel{b}}) \vdash b$
+\item $b \vdash \forall t(\tau(\overline{\Godel{b_0}}, \overline{\Godel{b_0}}, t) \to a(t))$    тут почти $a \vdash a$ написано\\
+$b \vdash \tau(\overline{\Godel{b_0}}, \overline{\Godel{b_0}}, \overline{\Godel{b}})$             по выразимости\\
+$b \vdash \tau(\overline{\Godel{b_0}}, \overline{\Godel{b_0}}, \overline{\Godel{b}}) \to a(\overline{\Godel{b}})$    сняли квантор с 1\\
+$b \to a(\overline{\Godel{b}})$
 \end{enumerate}
+\end{proof}
 
-\item Условия Гильберта-Бернайса
+Условия Гильберта-Бернайса \myworries{Лемма, теорема? хз чёт кароч}
 \end{itemize}
 Пусть πg(x, p) выражает Proof(x, p)
 πr(x) = \exists t πg(x, t) тогда если

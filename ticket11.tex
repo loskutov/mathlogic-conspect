@@ -1,4 +1,4 @@
-\section{Ticket 11: 1т о неполноте}
+\section{Первая теорема о неполноте}
 \label{sec-13}
 \subsection{Непротиворечивость, \texorpdfstring{$\omega$}{ω}-непротиворечивость}
 \label{sec-13-1}
@@ -14,7 +14,9 @@
 \end{lemma}
 \begin{proof}
     Противоречивость эквивалентна доказуемости $a \land \lnot a$. По \eqref{provability},
-    \[a \to \lnot a \to b,\]
+    \[a \to \lnot a \to b\]
+    Кроме того, по \eqref{impltoand},
+    \[(a \to \lnot a \to b) \to (a \land \lnot a \to b),\]
     из чего немедленно следует утверждение леммы.
 \end{proof}
 

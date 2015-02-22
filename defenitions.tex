@@ -111,10 +111,10 @@ $\alpha, \alpha \vee \neg \alpha, \neg \alpha \vdash \beta$
 множество с частичным порядком на нем, тогда операции $+$, $*$ определяются
 как $\sup$ и $\inf$:
 \begin{align*}
-    \sup p &= \min \{u \mid u \ge all\ s \in p\} \\
-    \inf p &= \max \{u \mid u \le all\ s \in p\} \\
-    a + b  &= \sup \{a, b\} \\
-    a * b  &= \inf \{a, b\}
+    \sup p &= \min u : \forall s \in p ~ u \ge s \\
+    \inf p &= \max u : \forall s \in p ~ u \le s \\
+    a + b  &= \sup ~ \{a, b\} \\
+    a * b  &= \inf ~ \{a, b\}
 \end{align*}
 Если для двух элементов всегда можно определить $a + b$ и $a * b$, то такое
 множество назывется решеткой.
@@ -155,7 +155,7 @@ $\alpha, \alpha \vee \neg \alpha, \neg \alpha \vdash \beta$
 \subsection*{Топологическая интерпретация ИИВ}
 \label{sec-2-10}
 Булеву алгебру и алгебру Гейтинга можно интерпретировать
-на множестве $\mathbb{R}^{n}$. Тогда заключения о общезначимости формулы
+на множестве $\R^n$. Тогда заключения о общезначимости формулы
 можно делать более наглядно.
 Давайте возьмем в качестве множества алгебры все открытые
 подмножества $\mathbb{R}^{n}$. Определим операции следующим образом:
@@ -420,13 +420,13 @@ $P^n_k$    & $25 + 6 \cdot 2^k \cdot 3^n$ & n-местные предикаты 
     \item Любая представимая в ФА ф-я является рекурсивной
         \begin{multline*}
             f(x_1, \dotsc, x_n) = \\
-            \plog(μ\template{S\template{G_\phi, U_{n+1, 1}, \dotsc, U_{n+1, n},
+            \plog(\mu \template{S\template{G_\phi, U_{n+1, 1}, \dotsc, U_{n+1, n},
             \plog(U_{n+1, n+1}, 1),
             \plog(U_{n+1, n+1}, 2)}}(x_1,\dotsc, x_n), 1)
         \end{multline*}
 
     $G_\phi$ тут принимает $n + 2$ аргумента: $x_1\ldots{}x_n, p, b$ и возвращает 0 если
-    p -- доказательство $\phi(x_1\ldots{}xₙ, p)$, представляющего f.
+    p -- доказательство $\phi(x_1, \dotsc, x_n, p)$, представляющего f.
 \end{itemize}
 \subsection*{Непротиворечивость}
 \label{sec-2-31}
@@ -443,8 +443,8 @@ $\nvdash  \exists p\lnot \phi(p)$. Проще говоря, если мы взя
 \subsection*{Первая теорема Гёделя о неполноте}
 \label{sec-2-33}
 \begin{enumerate}
-    \item Если формальная арифметика непротиворечива, то недоказуемо $\sigma(\Godel{\overline \sigma})$
-    \item Если формальная арифметика $\omega$-непротиворечива, то недоказуемо $\lnot \sigma(\Godel{\overline \sigma})$
+    \item Если формальная арифметика непротиворечива, то недоказуемо $\sigma(\overline{\Godel{\sigma}})$
+    \item Если формальная арифметика $\omega$-непротиворечива, то недоказуемо $\lnot \sigma(\overline{\Godel \sigma})$
 \end{enumerate}
 \subsection*{Первая теорема Гёделя о неполноте в форме Россера}
 \label{sec-2-34}
@@ -452,26 +452,24 @@ $\nvdash  \exists p\lnot \phi(p)$. Проще говоря, если мы взя
 такая формула $\phi$, что $\nvdash \phi$ и $\nvdash \lnot \phi$
 \subsection*{Consis}
 \label{sec-2-35}
-Consis -- утверждение, формально доказывающее непротиворечивость ФА
-
-То есть $\vdash Consis => ФА$ непротиворечива
+Consis -- утверждение, формально доказывающее непротиворечивость ФА. То есть $\vdash Consis \Leftrightarrow \text{ФА непротиворечива}$
 \subsection*{Условия Гильберта-Бернайса}
 \label{sec-2-36}
 Пусть $\pi g(x, p)$ выражает $\Proof(x, p)$.
 $\pi (x) = \exists t.\pi g(x, t)$ действительно показывает,
 что выражение доказуемо, если
 \begin{enumerate}
-\item $\vdash a => \vdash \pi(\Godel{\overline a})$
-\item $\vdash \pi \left(\Godel{\overline a}\right) \to \pi \left(\Godel{\overline{\pi (\Godel{\overline a})}}\right)$
-\item $\vdash \pi \left(\Godel{\overline a}\right) \to
-    \pi \left(\Godel{\overline{(a \to b)}}\right) \to \pi \left(\Godel{\overline{b}}\right)$
+\item $\vdash a \Rightarrow \vdash \pi(\overline{\Godel a})$
+\item $\vdash \pi \left(\overline{\Godel a}\right) \to \pi \left(\overline{\Godel{\pi (\overline{\Godel a})}}\right)$
+\item $\vdash \pi \left(\overline{\Godel a}\right) \to
+    \pi \left(\overline{\Godel{(a \to b)}}\right) \to \pi \left(\overline{\Godel{b}}\right)$
 \end{enumerate}
 \subsection*{Лемма о самоприменении}
 \label{sec-2-37}
 $a(x)$ -- формула, тогда $\exists b$ такой что
 \begin{enumerate}
-    \item $\vdash a\left(\Godel{\overline b}\right) \to b$
-    \item $\vdash \beta \to a\left(\Godel{\overline b}\right)$
+    \item $\vdash a\left(\overline{\Godel b}\right) \to b$
+    \item $\vdash \beta \to a\left(\overline{\Godel b}\right)$
 \end{enumerate}
 \subsection*{Вторая теорема Гёделя о неполноте ФА}
 \label{sec-2-38}

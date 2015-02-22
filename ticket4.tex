@@ -1,4 +1,4 @@
-\section{Ticket 4: ИИВ2}
+\section{Модели Крипке}
 \label{sec-6}
 \subsection{Модели Крипке}
 \label{sec-6-1}
@@ -59,14 +59,14 @@ $M \vdash a \Rightarrow a \in M$
 \begin{enumerate}
 \item $W, x \Vdash P \Leftrightarrow v(x, P) = 1$ если $P \in V$ ($V$ - множество вынужденных переменных). Монотонность выполняется по определению дерева
 \item $W, x \Vdash (A \land B) \Leftrightarrow W, x \Vdash A$ и $W, x \Vdash B$\\
-С помощью аксиомы $A \land B \rightarrow A$ доказываем $W \vdash A$, значит $A \in W$. Аналогично с $B$ 
+С помощью аксиомы $A \land B \rightarrow A$ доказываем $W \vdash A$, значит $A \in W$. Аналогично с $B$
 \item $W, x \Vdash (A \vee B) \Leftrightarrow W, x \Vdash A$ или $W, x \Vdash B$\\
 Очевидно по определению дизъюнктивности
 \item $W, x \Vdash (A \rightarrow B) \Leftrightarrow \forall y \geq x (W, y \Vdash A \Rightarrow W, y \Vdash B)$\\
 Мы знаем, что $W \vdash A \rightarrow B$. Пусть в $W$ есть $A$, тогда по M.P. докажем, что $B$. Пусть в $W$ есть $B$, тогда мы уже получили $B$.
 \item $W, x \Vdash \neg A \Leftrightarrow \forall y \geq x (W, x \nVdash A)$
 
-Если где-то оказалось $A$, то оно доказуемо, а значит мы сможем доказать и $A \land \neg A$ 
+Если где-то оказалось $A$, то оно доказуемо, а значит мы сможем доказать и $A \land \neg A$
 \end{enumerate}
 \item $\Vdash A$, тогда $W_{i} \Vdash A$. Рассмотрим $W_{0} = \lbrace$все тавтологии ИИВ$\rbrace$. $W_{0} \Vdash A$, т.е. $\vdash A$.
 \end{enumerate}
@@ -75,7 +75,7 @@ $M \vdash a \Rightarrow a \in M$
 \subsection{Нетабличность интуиционистской логики}
 \label{sec-6-5}
 \begin{theorem}
-Не существует полной модели, которая может быть выражена таблицей 
+Не существует полной модели, которая может быть выражена таблицей
 \end{theorem}
 \begin{proof}
 Докажем от противного. Построим табличную модель и докажем, что она не полна. В ИВ мы обычно пользуемся алгеброй $J_{0}$ Яськовского $V = \lbrace 0, 1 \rbrace,$ $0 \leq 1$.\\

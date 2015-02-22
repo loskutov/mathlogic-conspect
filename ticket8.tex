@@ -1,20 +1,20 @@
-\section{Ticket 8: рекурс, Аккерман}
+\section{Рекурсивные функции, функцмя Аккермана}
 \label{sec-10}
 \subsection{Рекурсивные функции}
 \label{sec-10-1}
 Рассмотрим примитивы, из которых будем собирать выражения:
 
 \begin{enumerate}
-\item $Z \colon \mathbb{N} \rightarrow \mathbb{N}$, $Z(x) = 0$
-\item $N \colon \mathbb{N} \rightarrow \mathbb{N}$, $N(x) = x'$
-\item Проекция. $U^n_i \colon \mathbb{N}^n \rightarrow \mathbb{N}$, $U^n_i (x_1, \dotsc, x_n) = x_i$
-\item Подстановка. Если $f \colon \mathbb{N}^n \rightarrow \mathbb{N}$ и $g_1, \dotsc, g_n \colon \mathbb{N}^m \rightarrow \mathbb{N}$, 
-    то $S\template{f,g_1,\dotsc, g_n} \colon \mathbb{N}^m \rightarrow \mathbb{N}$.
+\item $Z \colon \N \rightarrow \N$, $Z(x) = 0$
+\item $N \colon \N \rightarrow \N$, $N(x) = x'$
+\item Проекция. $U^n_i \colon \N^n \rightarrow \N$, $U^n_i (x_1, \dotsc, x_n) = x_i$
+\item Подстановка. Если $f \colon \N^n \rightarrow \N$ и $g_1, \dotsc, g_n \colon \N^m \rightarrow \N$,
+    то $S\template{f,g_1,\dotsc, g_n} \colon \N^m \rightarrow \N$.
 
     При этом $S\template{f,g_1,\dotsc, g_n} (x_1,\dotsc, x_m) = f(g_1(x_1,\dotsc, x_m), \dotsc, g_n(x_1,\dotsc, x_m))$
-\item Примитивная рекурсия. Если $f \colon \mathbb{N}^n     \to \mathbb{N}$ и 
-                                 $g \colon \mathbb{N}^{n+2} \to \mathbb{N}$, то
-    \[R\template{f, g}(x_1\ldots{}x_n, n) = \begin{cases}
+\item Примитивная рекурсия. Если $f \colon \N^n     \to \N$ и 
+                                 $g \colon \N^{n+2} \to \N$, то
+    \[R\template{f, g}(x_1, \dotsc, x_n, n) = \begin{cases}
     	f(x_1, \dotsc, x_n) & n = 0 \\
     	g(x_1, \dotsc, x_n, n, R\ltemplate f, g\rtemplate(x_1, \dotsc, x_n, n - 1)) & n > 0
     \end{cases}\]
@@ -216,7 +216,7 @@ $f(n_1, \dotsc, n_k, m+1) = g(n_1, \dotsc, n_k, m, f(n_1, \dotsc, n_k, m))$\\
     < {}&A(J_0 + 4, \sum(\overline n)) && \text{По \ref{lemma5}}\\
     < {}&A(J, \sum(\overline n)) && \text{По монотонности}\\
 = {}&A(J, \sum(\overline n) + 0)\\
-\end{align*} 
+\end{align*}
 \item 
 \begin{align*}
 &f(\overline n, k + 1)\\

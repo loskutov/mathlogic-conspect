@@ -1,30 +1,31 @@
 % Created 2015-01-21 Ср 21:06
-%\documentclass[draft,12pt]{article}
-\documentclass[fleqn,12pt]{article}
+\documentclass[a4paper, fleqn, draft]{article}
+\usepackage[english,russian]{babel}
 \usepackage{euler}
+\usepackage{fontspec}
+\usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=1.6cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{xcolor}
 \usepackage{epigraph}
 \usepackage{mathtools}
 \usepackage{nicefrac} % ½ и его друзья
-\usepackage{amssymb}
 \usepackage{proof} % M. P. и его друзья
 \usepackage[linkbordercolor={0 0 1}, pdftitle={Курс матлогики по Штукенбергу Д. Г.}]{hyperref}
-\usepackage{amsthm}
 \usepackage{comment}
 \usepackage{stmaryrd} % ⟦⟧
 \usepackage{clrscode3e}
 \usepackage{enumitem} % всякие модные enumerate-ы (latin letters, roman numbers etc)
-\usepackage{xcolor} % red color for worries
 \usepackage{pict2e} % templates
-\usepackage[left=2cm,right=1.6cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
-\usepackage{microtype} % модная микротипографика, нифига не работающая с XeLaTeX (ну, почти)
-\usepackage{fontspec}
-\setmainfont[Ligatures=TeX,SmallCapsFont={Times New Roman}]{Palatino Linotype}
+%\usepackage{microtype} % модная микротипографика, нифига не работающая с XeLaTeX (ну, почти)
+%\setmainfont[Ligatures=TeX,SmallCapsFont={Times New Roman}]{Palatino Linotype}
 %\setmainfont[Ligatures=TeX]{Times New Roman}
+%\usepackage{polyglossia}
+%\setdefaultlanguage[babelshorthands=true]{russian}
+\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}
+\setmainfont[Ligatures={TeX,Historic}]{DejaVu Sans}
 \setmonofont{DejaVu Sans Mono}
-\usepackage{polyglossia}
-\setdefaultlanguage[babelshorthands=true]{russian}
-
 %\hyphenpenalty=5000
 
 
@@ -147,3 +148,9 @@ Mykhail Volkhov, 2538, 2014Sep-2015Jan\\
 %\include{ticket15}
 %\include{ticket16}
 \end{document}
+
+%%% Local Variables:
+%%% config: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% End:
